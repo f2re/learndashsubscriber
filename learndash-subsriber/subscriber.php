@@ -48,7 +48,7 @@ if(! class_exists('LDSubscriber_init')){
       add_action('plugins_loaded',[$this,'include_dependencies']);
     }        
     function include_dependencies() {
-      include DOGBOOKING_PATH.'/core/init.php';
+      include LDSUBSCRIBER_PATH.'/core/init.php';
     }              
   }        
 }

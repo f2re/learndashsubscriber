@@ -1,0 +1,18 @@
+{
+    "name": "f2re/oneworldcultures",
+    "description": "Leader board subscriber",
+    "type": "library",
+    "authors": [
+        {
+            "name": "F2re",
+            "email": "f2re@yandex.ru"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Helpers\\": "app/helpers",
+            "Controllers\\": "app/controllers"
+        }
+    }
+}

@@ -13,7 +13,7 @@ if(! class_exists('LDSubscriber_Enqueue')){
     }   
     
     function enqueue() {
-      // wp_enqueue_style('dogbooking',LDSUBSCRIBER_URl.'assets/css/main.css');
+      wp_enqueue_style('dogbooking',LDSUBSCRIBER_URl.'assets/css/main.css');
       wp_enqueue_script('jquery');  
     }
           
