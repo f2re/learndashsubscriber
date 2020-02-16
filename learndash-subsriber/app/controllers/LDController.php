@@ -23,6 +23,32 @@ class LDController {
       'methods'  => 'POST',
       'callback' => array( $this, 'get_course_data' ),
     ) );
+
+    register_rest_route( 'ldsubscriber/v1', '/get_course_list/', array(
+      'methods'  => 'POST',
+      'callback' => array( $this, 'get_course_list' ),
+    ) );
+  }
+
+  /**
+   * return user data summary
+   * @return [type] [description]
+   */
+  public function get_course_list(){
+    // 
+    // if plugin installed - ok
+    // 
+    $postid = $_POST['postid'];
+    // return [ "res"=>do_shortcode('[ld_course_list]') ];
+    // return [ "res"=>do_shortcode('[course_content course_id="81"]') ];
+    global $post;
+    $post      =  get_post( $postid );
+    $course_id = learndash_get_course_id( $postid );
+    return [ "next_post"=>learndash_next_post_link('',true,$post), 
+             "prev_post"=>learndash_previous_post_link('',true), 
+             "all_course_content"=>do_shortcode('[course_content course_id="'.$course_id.'"]') ];
+    // return [ "res"=>learndash_get_next_lesson_redirect($post) ];
+
   }
 
   /**
