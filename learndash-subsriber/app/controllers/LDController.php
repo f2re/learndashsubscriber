@@ -43,7 +43,7 @@ class LDController
     // 
     // if plugin installed - ok
     // 
-    $postid = $_POST['postid'];
+    $postid = $_POST['postid']; 
     $userid = $_POST['userid'];
     // return [ "res"=>do_shortcode('[ld_course_list]') ];
     // return [ "res"=>do_shortcode('[course_content course_id="81"]') ];

@@ -1,4 +1,8 @@
 jQuery(document).ready(function($) {
+  // save users points in global variable
+  let users_points = [];
+  let user_name    = 'Anonim';
+  
   init();
 
   var observer = new MutationObserver(function(mutations) {
@@ -32,6 +36,7 @@ jQuery(document).ready(function($) {
 
           dirty_data(correct, incorrect, points);
           // console.log("Class attribute changed to:", attributeValue);
+          show_leaders_points(points)
         }
       }
     });
@@ -104,6 +109,31 @@ jQuery(document).ready(function($) {
   }
 
   /**
+   * draw ordering points leaderboard
+   */
+  function  show_leaders_points(points){
+    users_points['you'] = points;
+    var sortable = [];
+    for (var item in users_points) {
+        sortable.push([item, users_points[item]]);
+    }
+    // define sort function
+    sortable.sort(function(a, b) {
+        return a[1] - b[1];
+    });
+
+    // fill div with order
+    let _div = $('<div class="leaderboard"></div>');
+    $.each( sortable, function(i,obj){
+      _div.prepend( $('<div >'+obj[0]+' / '+obj[1]+'</div>') );
+    } );
+
+    // insert in popup
+    let popup = $("#LDS-popup");
+    popup.find(".content").after(_div);
+  }
+
+  /**
    * request table data from API
    * @return {[type]} [description]
    */
@@ -123,7 +153,11 @@ jQuery(document).ready(function($) {
     }).done(function(resp) {
       // console.log(resp);
       let _div = $(resp.all_course_content);
-
+      // save users points
+      users_points = resp.users;
+      // save username
+      user_name = resp.you;
+      
       // let url = _div.find('a').attr('href');
       // console.log(url);
       // let iframe = $('<iframe src="'+url+'" style="width:100%; height:100%;"></iframe>');
