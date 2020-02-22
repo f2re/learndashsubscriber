@@ -35,6 +35,7 @@ class BoardPage {
     //   exit;
     // }
 
+    $userid = 0;
 
     // проверяем вошел ли пользователь
     if (is_user_logged_in()) {
@@ -43,7 +44,7 @@ class BoardPage {
       // get user from DB
       // 
       $groupsids = learndash_get_users_group_ids( $current_user->ID );
-
+      $userid    = $current_user->ID;
       
     }
 
@@ -54,7 +55,7 @@ class BoardPage {
     // 
     // start section with forms
     // 
-    echo '<section class="leadersection-subscriber" id="leadersection-subscriber" postid="'.get_the_ID().'">';
+    echo '<section class="leadersection-subscriber" id="leadersection-subscriber" postid="'.get_the_ID().'" userid="'.$userid.'">';
 
     $this->write_user_scores($user_data);
     // print_r(\uncanny_learndash_reporting\ReportingApi::get_labels());
