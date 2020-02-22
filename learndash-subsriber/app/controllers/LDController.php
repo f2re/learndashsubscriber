@@ -4,7 +4,7 @@ namespace Controllers;
 /**
  * rest api controller
  */
-class LDController {
+class LDController { 
   /**
    * Class constructor
    */
