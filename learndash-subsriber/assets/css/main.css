@@ -1,63 +1,186 @@
-
-.overlay {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.7);
-  transition: opacity 500ms;
-  visibility: hidden;
-  opacity: 0;
-}
-.overlay.active {
-  visibility: visible;
-  opacity: 1;
+.leaderboard {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2fr 1fr;
+      grid-template-columns: 2fr 1fr;
+  -ms-grid-rows: 180px 1fr 180px;
+      grid-template-rows: 180px 1fr 180px;
+      grid-template-areas: 'leaderboard__header leaderboard__header' 'leaderboard__rankings leaderboard__cities' 'leaderboard__footer leaderboard__footer';
+  -webkit-column-gap: 80px;
+          column-gap: 80px;
+  row-gap: 60px;
 }
 
-.content{
-  padding:20px;
-  color:black;
+.leaderboard__header {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: leaderboard__header;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.popup {
-  margin: 70px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 5px;
-  width: 30%;
-  position: relative;
-  transition: all 5s ease-in-out;
+.leaderboard__title {
+  font-size: 40px;
+  text-transform: uppercase;
 }
 
-.popup h2 {
-  margin-top: 0;
-  color: #333;
-  font-family: Tahoma, Arial, sans-serif;
+.leaderboard__rankings {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: leaderboard__rankings;
 }
-.popup .close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  transition: all 200ms;
+
+.leaderboard__heading {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 100px 600px 100px;
+      grid-template-columns: 100px 600px 100px;
+  -ms-grid-rows: 100px;
+      grid-template-rows: 100px;
+      grid-template-areas: "leaderboard__rank . leaderboard__points";
+  -webkit-column-gap: 20px;
+          column-gap: 20px;
+}
+
+.leaderboard__rank {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: leaderboard__rank;
+}
+
+.leaderboard__points {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: leaderboard__points;
+}
+
+.leaderboard__player {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.leaderboard__cities {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: leaderboard__cities;
+  row-gap: 40px;
+}
+
+.leaderboard__city {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 280px;
+  height: 80px;
   font-size: 30px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #333;
-}
-.popup .close:hover {
-  color: #06D85F;
-}
-.popup .content {
-  max-height: 30%;
-  overflow: auto;
+  border: 4px solid;
+  border-radius: 15px;
+  border-color: #f9da47;
 }
 
-@media screen and (max-width: 700px){
-  .box{
-    width: 70%;
-  }
-  .popup{
-    width: 70%;
-  }
+.leaderboard__next {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 280px;
+  height: 80px;
+  font-size: 30px;
+  background-color: #00b0ea;
+  color: #fff;
+  border-radius: 15px;
+}
+
+.leaderboard__footer {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: leaderboard__footer;
+}
+
+.player {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 100px 400px 200px 100px;
+      grid-template-columns: 100px 400px 200px 100px;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+      grid-template-areas: 'player__rank player__names player__thumbnail player__score';
+  -webkit-column-gap: 20px;
+          column-gap: 20px;
+  row-gap: 40px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.player__rank {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: player__rank;
+  width: 100px;
+  height: 100px;
+  border-width: 8px;
+  border-radius: 50%;
+  border-color: #fff;
+  color: #fff;
+  background-color: #00b0ea;
+}
+
+.player__names {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: player__names;
+  height: 90px;
+  background-color: #00b0ea;
+  color: #fff;
+}
+
+.player__thumbnail {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: player__thumbnail;
+}
+
+.player__points {
+  -ms-grid-row: 1;
+  -ms-grid-column: 4;
+  grid-area: player__score;
+  font-size: 50px;
+  font-weight: 990;
+  color: #00b0ea;
 }

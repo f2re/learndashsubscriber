@@ -75,7 +75,6 @@ class BoardPage {
               </div>
             </div>
           </div>';
-
     // 
     // return data
     // 
