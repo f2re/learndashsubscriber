@@ -1,23 +1,45 @@
+.background {
+    display: fixed;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
 .leaderboard {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: 180px 1fr 180px;
+    grid-template-columns: 1fr 400px;
+    grid-template-rows: 180px auto;
     grid-template-areas:   'leaderboard__header leaderboard__header'
                            'leaderboard__rankings leaderboard__cities'
                            'leaderboard__footer leaderboard__footer';
-    column-gap: 80px;
-    row-gap: 60px;
+    column-gap: 40px;
+    padding: 0 90px;
+    font-family: $primary-font;
 
     &__header {
         grid-area: leaderboard__header;
         display: flex;
-        justify-content: center;
-        align-items: center;        
+        justify-content: space-between;
+        align-items: center;
     }
 
     &__title {
+        font-family: $heading-font;
+        font-size: 95px;
+        color: $grey;
+    }
+
+    &__exit {
         font-size: 40px;
-        text-transform: uppercase;
+        margin-right: 200px;
+        color: $grey;
     }
 
     &__rankings {
@@ -25,19 +47,21 @@
     }
 
     &__heading {
-        display: grid;
-        grid-template-columns: 100px 600px 100px;
-        grid-template-rows: 100px;
-        grid-template-areas: "leaderboard__rank . leaderboard__points";
-        column-gap: 20px;
+        display: flex;
+        justify-content: space-between;
+        max-width: 1000px;
     }
 
     &__rank {
-        grid-area: leaderboard__rank;
+        font-size: 30px;
+        padding: 10px 0;
+        color: $grey;
     }
 
     &__points {
-        grid-area: leaderboard__points;
+        font-size: 30px;
+        padding: 10px 0;
+        color: $grey;
     }
 
     &__player {
@@ -45,33 +69,98 @@
     }
 
     &__cities {
-        display: grid;
         grid-area: leaderboard__cities;
-        row-gap: 40px;
+        display: grid;
+        justify-content: center;
+        grid-template-rows: repeat(4, 60px) 1fr;
+        row-gap: 30px;
+        margin-top: 64px;
     }
 
     &__city {
         display: flex;
+        position: relative;
         justify-content: center;
         align-items: center;
-        width: 280px;
-        height: 80px;
-        font-size: 30px;
+        width: 200px;
+        height: 60px;
+        font-size: 28px;
         border: 4px solid;
         border-radius: 15px;
-        border-color: $bright-sun;
+        background-color: $white;
+
+        &--blue {
+            @extend .leaderboard__city;
+            color: $blue;
+            border-color: $blue;
+
+            &.checkmark {
+                background-color: $blue;
+                color: $white;
+            }
+        }
+
+        &--green {
+            @extend .leaderboard__city;
+            color: $green;
+            border-color: $green;
+
+            &.checkmark {
+                background-color: $green;
+                color: $white;
+            }
+        }
+
+        &--yellow {
+            @extend .leaderboard__city;
+            color: $yellow;
+            border-color: $yellow;
+            
+            &.checkmark {
+                background-color: $yellow;
+                color: $white;
+            }
+        }
+
+        &--pink {
+            @extend .leaderboard__city;
+            color: $pink;
+            border-color: $pink;
+
+            &.checkmark {
+                background-color: $pink;
+                color: $white;
+            }
+        }
+    }
+
+    .checkmark {        
+        &:before {
+            content: '';
+            position: absolute;
+            display: flex;
+            left: -60px;     
+            width: 30px;
+            height: 30px;
+            background: url('../img/checkmark.svg') no-repeat;
+        }
     }
 
     &__next {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 280px;
-        height: 80px;
-        font-size: 30px;
-        background-color: $cerulean;
-        color: $white;
-        border-radius: 15px;
+        align-items: flex-end;
+
+        svg {
+            width: 280px;
+        }
+
+        path {            
+            box-shadow : 5.28px 5.28px 3.77px rgba(155, 155, 155, 0.75);
+        }
+
+        text {
+            font-family: $primary-font;
+        }
     }
 
     &__footer {
@@ -81,43 +170,136 @@
 
 .player {
     display: grid;
-    grid-template-columns: 100px 400px 200px 100px;
-    grid-template-rows: 1fr;
-    grid-template-areas: 'player__rank player__names player__thumbnail player__score';
+    position: relative;
+    grid-template-columns: 85px 170px minmax(200px, 600px) 85px;
+    grid-auto-rows: 85px;
+    grid-template-areas: 'player__rank player__thumbnail player__names player__points';
     column-gap: 20px;
-    row-gap: 40px;
+    row-gap: 20px; // template areas is breaking row gap; will come back to this
     align-items: center;
-
-    &__rank {
-        display: flex;
-        grid-area: player__rank;
-        width: 100px;
-        height: 100px;
-        border-width: 8px;
-        border-radius: 50%;
-        border-color: $white;
-        color: $white;
+    max-width: 1000px;
+    font-family: $primary-font;
+    margin-bottom: 20px;
+    
+    &:before {
+        content: '';
+        position: absolute;
+        width: 940px;
+        height: 50px;
         background-color: $cerulean;
+        margin-left: 10px;
+        z-index: 1;
     }
 
-    &__names {
+    &__rank {
+        grid-area: player__rank;
         display: flex;
         justify-content: center;
-        align-items: center;
-        grid-area: player__names;
-        height: 90px;
+        align-items: center;       
+        width: 85px;
+        height: 85px;
+        font-family: $heading-font;
+        font-size: 60px;
+        border: 3px solid $white;
+        border-radius: 24px;       
         background-color: $cerulean;
         color: $white;
+        box-shadow : 5.28px 5.28px 3.77px rgba(155, 155, 155, 0.75);
+        z-index: 2;
     }
 
     &__thumbnail {
         grid-area: player__thumbnail;
+        width: 170px;
+        height: 85px;
+        border: 3px solid $white;
+        border-radius: 24px;
+        background-color: $white;
+        background-size: cover;
+        background-position: top center;
+        background-repeat: no-repeat;
+        box-shadow : 5.28px 5.28px 3.77px rgba(155, 155, 155, 0.75);
+        z-index: 2;
+    }
+
+    &__names {
+        grid-area: player__names;
+        display: flex;
+        justify-content: center;
+        align-items: center;        
+        font-size: 37px;
+        text-overflow: ellipsis;               
+        color: $white;
+        white-space: nowrap;
+        overflow: hidden;
+        z-index: 2;
     }
 
     &__points {
-        grid-area: player__score;
+        grid-area: player__points;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 85px;
+        height: 85px;
+        font-family: $heading-font;
         font-size: 50px;
-        font-weight: 990;
-        color: $cerulean;
+        border: 3px solid $white;
+        border-radius: 24px;       
+        background-color: $cerulean;
+        color: $white;
+        box-shadow : 5.28px 5.28px 3.77px rgba(155, 155, 155, 0.75);
+        z-index: 2;
+    }
+
+    &--blue {
+        &:before,
+        .player__rank,
+        .player__points {
+            background-color: $blue;
+        }
+        .player__thumbnail {
+            border-color: $blue;
+        }
+    }
+    &--green {
+        &:before,
+        .player__rank,
+        .player__points {
+            background-color: $green;
+        }
+        .player__thumbnail {
+            border-color: $green;
+        }
+    }
+    &--yellow {
+        &:before,
+        .player__rank,
+        .player__points {
+            background-color: $yellow;
+        }
+        .player__thumbnail {
+            border-color: $yellow;
+        }
+    }
+    &--orange {
+        &:before,
+        .player__rank,
+        .player__points {
+            background-color: $orange;
+        }
+        .player__thumbnail {
+            border-color: $orange;
+        }
+    }
+    &--pink {
+        &:before,
+        .player__rank,
+        .player__points {
+            background-color: $pink;
+        }
+        .player__thumbnail {
+            border-color: $pink;
+        }
     }
 }

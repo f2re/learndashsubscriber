@@ -74,6 +74,15 @@ class LDController
     ];
     // return [ "res"=>learndash_get_next_lesson_redirect($post) ];
 
+    //
+    // audio data; since this is get_course_list() do we want to extend this function and rename it?
+    //
+    $audio            = [];
+    $audio['5']       = get_field('5_points', $post_id);
+    $audio['6']       = get_field('6_points', $post_id);
+    $audio['7']       = get_field('7_points', $post_id);
+    $audio['8']       = get_field('8_points', $post_id);
+    $audio['9']       = get_field('9_points', $post_id);
   }
 
   /**

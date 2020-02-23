@@ -1,14 +1,48 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Ocean Six Condensed";
+  src: url("../fonts/Ocean Six Condensed.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Permanent Marker";
+  src: url("https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.background {
+  display: fixed;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
 .leaderboard {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 2fr 1fr;
-      grid-template-columns: 2fr 1fr;
-  -ms-grid-rows: 180px 1fr 180px;
-      grid-template-rows: 180px 1fr 180px;
+  -ms-grid-columns: 1fr 400px;
+      grid-template-columns: 1fr 400px;
+  -ms-grid-rows: 180px auto;
+      grid-template-rows: 180px auto;
       grid-template-areas: 'leaderboard__header leaderboard__header' 'leaderboard__rankings leaderboard__cities' 'leaderboard__footer leaderboard__footer';
-  -webkit-column-gap: 80px;
-          column-gap: 80px;
-  row-gap: 60px;
+  -webkit-column-gap: 40px;
+          column-gap: 40px;
+  padding: 0 90px;
+  font-family: "Permanent Marker";
 }
 
 .leaderboard__header {
@@ -19,17 +53,24 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
 .leaderboard__title {
+  font-family: "Ocean Six Condensed";
+  font-size: 95px;
+  color: #4C4C4C;
+}
+
+.leaderboard__exit {
   font-size: 40px;
-  text-transform: uppercase;
+  margin-right: 200px;
+  color: #4C4C4C;
 }
 
 .leaderboard__rankings {
@@ -39,27 +80,25 @@
 }
 
 .leaderboard__heading {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 100px 600px 100px;
-      grid-template-columns: 100px 600px 100px;
-  -ms-grid-rows: 100px;
-      grid-template-rows: 100px;
-      grid-template-areas: "leaderboard__rank . leaderboard__points";
-  -webkit-column-gap: 20px;
-          column-gap: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  max-width: 1000px;
 }
 
 .leaderboard__rank {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  grid-area: leaderboard__rank;
+  font-size: 30px;
+  padding: 10px 0;
+  color: #4C4C4C;
 }
 
 .leaderboard__points {
-  -ms-grid-row: 1;
-  -ms-grid-column: 3;
-  grid-area: leaderboard__points;
+  font-size: 30px;
+  padding: 10px 0;
+  color: #4C4C4C;
 }
 
 .leaderboard__player {
@@ -69,48 +108,111 @@
 }
 
 .leaderboard__cities {
-  display: -ms-grid;
-  display: grid;
   -ms-grid-row: 2;
   -ms-grid-column: 2;
   grid-area: leaderboard__cities;
-  row-gap: 40px;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-grid-rows: (60px)[4] 1fr;
+      grid-template-rows: repeat(4, 60px) 1fr;
+  row-gap: 30px;
+  margin-top: 64px;
 }
 
-.leaderboard__city {
+.leaderboard__city, .leaderboard__city--blue, .leaderboard__city--green, .leaderboard__city--yellow, .leaderboard__city--pink {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 280px;
-  height: 80px;
-  font-size: 30px;
+  width: 200px;
+  height: 60px;
+  font-size: 28px;
   border: 4px solid;
   border-radius: 15px;
+  background-color: #fff;
+}
+
+.leaderboard__city--blue {
+  color: #00b0ea;
+  border-color: #00b0ea;
+}
+
+.leaderboard__city--blue.checkmark {
+  background-color: #00b0ea;
+  color: #fff;
+}
+
+.leaderboard__city--green {
+  color: #1baf57;
+  border-color: #1baf57;
+}
+
+.leaderboard__city--green.checkmark {
+  background-color: #1baf57;
+  color: #fff;
+}
+
+.leaderboard__city--yellow {
+  color: #f9da47;
   border-color: #f9da47;
+}
+
+.leaderboard__city--yellow.checkmark {
+  background-color: #f9da47;
+  color: #fff;
+}
+
+.leaderboard__city--pink {
+  color: #ef0088;
+  border-color: #ef0088;
+}
+
+.leaderboard__city--pink.checkmark {
+  background-color: #ef0088;
+  color: #fff;
+}
+
+.leaderboard .checkmark:before {
+  content: '';
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  left: -60px;
+  width: 30px;
+  height: 30px;
+  background: url("../img/checkmark.svg") no-repeat;
 }
 
 .leaderboard__next {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.leaderboard__next svg {
   width: 280px;
-  height: 80px;
-  font-size: 30px;
-  background-color: #00b0ea;
-  color: #fff;
-  border-radius: 15px;
+}
+
+.leaderboard__next path {
+  -webkit-box-shadow: 5.28px 5.28px 3.77px rgba(155, 155, 155, 0.75);
+          box-shadow: 5.28px 5.28px 3.77px rgba(155, 155, 155, 0.75);
+}
+
+.leaderboard__next text {
+  font-family: "Permanent Marker";
 }
 
 .leaderboard__footer {
@@ -123,36 +225,36 @@
 .player {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 100px 400px 200px 100px;
-      grid-template-columns: 100px 400px 200px 100px;
-  -ms-grid-rows: 1fr;
-      grid-template-rows: 1fr;
-      grid-template-areas: 'player__rank player__names player__thumbnail player__score';
+  position: relative;
+  -ms-grid-columns: 85px 170px minmax(200px, 600px) 85px;
+      grid-template-columns: 85px 170px minmax(200px, 600px) 85px;
+  grid-auto-rows: 85px;
+      grid-template-areas: 'player__rank player__thumbnail player__names player__points';
   -webkit-column-gap: 20px;
           column-gap: 20px;
-  row-gap: 40px;
+  row-gap: 20px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  max-width: 1000px;
+  font-family: "Permanent Marker";
+  margin-bottom: 20px;
+}
+
+.player:before {
+  content: '';
+  position: absolute;
+  width: 940px;
+  height: 50px;
+  background-color: #00b0ea;
+  margin-left: 10px;
+  z-index: 1;
 }
 
 .player__rank {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: player__rank;
-  width: 100px;
-  height: 100px;
-  border-width: 8px;
-  border-radius: 50%;
-  border-color: #fff;
-  color: #fff;
-  background-color: #00b0ea;
-}
-
-.player__names {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -162,25 +264,129 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
-  grid-area: player__names;
-  height: 90px;
+  width: 85px;
+  height: 85px;
+  font-family: "Ocean Six Condensed";
+  font-size: 60px;
+  border: 3px solid #fff;
+  border-radius: 24px;
   background-color: #00b0ea;
   color: #fff;
+  -webkit-box-shadow: 5.28px 5.28px 3.77px rgba(155, 155, 155, 0.75);
+          box-shadow: 5.28px 5.28px 3.77px rgba(155, 155, 155, 0.75);
+  z-index: 2;
 }
 
 .player__thumbnail {
   -ms-grid-row: 1;
-  -ms-grid-column: 3;
+  -ms-grid-column: 2;
   grid-area: player__thumbnail;
+  width: 170px;
+  height: 85px;
+  border: 3px solid #fff;
+  border-radius: 24px;
+  background-color: #fff;
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  -webkit-box-shadow: 5.28px 5.28px 3.77px rgba(155, 155, 155, 0.75);
+          box-shadow: 5.28px 5.28px 3.77px rgba(155, 155, 155, 0.75);
+  z-index: 2;
+}
+
+.player__names {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: player__names;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 37px;
+  text-overflow: ellipsis;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  z-index: 2;
 }
 
 .player__points {
   -ms-grid-row: 1;
   -ms-grid-column: 4;
-  grid-area: player__score;
+  grid-area: player__points;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 85px;
+  height: 85px;
+  font-family: "Ocean Six Condensed";
   font-size: 50px;
-  font-weight: 990;
-  color: #00b0ea;
+  border: 3px solid #fff;
+  border-radius: 24px;
+  background-color: #00b0ea;
+  color: #fff;
+  -webkit-box-shadow: 5.28px 5.28px 3.77px rgba(155, 155, 155, 0.75);
+          box-shadow: 5.28px 5.28px 3.77px rgba(155, 155, 155, 0.75);
+  z-index: 2;
+}
+
+.player--blue:before,
+.player--blue .player__rank,
+.player--blue .player__points {
+  background-color: #00b0ea;
+}
+
+.player--blue .player__thumbnail {
+  border-color: #00b0ea;
+}
+
+.player--green:before,
+.player--green .player__rank,
+.player--green .player__points {
+  background-color: #1baf57;
+}
+
+.player--green .player__thumbnail {
+  border-color: #1baf57;
+}
+
+.player--yellow:before,
+.player--yellow .player__rank,
+.player--yellow .player__points {
+  background-color: #f9da47;
+}
+
+.player--yellow .player__thumbnail {
+  border-color: #f9da47;
+}
+
+.player--orange:before,
+.player--orange .player__rank,
+.player--orange .player__points {
+  background-color: #f88a49;
+}
+
+.player--orange .player__thumbnail {
+  border-color: #f88a49;
+}
+
+.player--pink:before,
+.player--pink .player__rank,
+.player--pink .player__points {
+  background-color: #ef0088;
+}
+
+.player--pink .player__thumbnail {
+  border-color: #ef0088;
 }

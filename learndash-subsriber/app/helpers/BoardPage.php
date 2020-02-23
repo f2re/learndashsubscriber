@@ -135,6 +135,6 @@ class BoardPage {
     wp_enqueue_script('ldsubscriber-require', LDSUBSCRIBER_URl.'assets/js/require.js',['jquery'],'1.0',true );
     wp_enqueue_script('ldsubscriber-useradmin', LDSUBSCRIBER_URl.'assets/js/userboard.js',['jquery','ldsubscriber-require'],'1.0',true );
   }
-
-
+  
+  
 }
