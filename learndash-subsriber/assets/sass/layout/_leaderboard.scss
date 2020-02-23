@@ -40,6 +40,7 @@
         font-size: 40px;
         margin-right: 200px;
         color: $grey;
+        cursor: pointer;
     }
 
     &__rankings {
@@ -82,54 +83,57 @@
         position: relative;
         justify-content: center;
         align-items: center;
-        width: 200px;
-        height: 60px;
-        font-size: 28px;
+        width: 300px;
+        height: 65px;
+        // font-size: 28px;
         border: 4px solid;
         border-radius: 15px;
         background-color: $white;
+        text-align: center;
+        padding: 9px !important;
+        font-size: 22px !important;
 
         &--blue {
             @extend .leaderboard__city;
-            color: $blue;
-            border-color: $blue;
+            color: $blue !important;
+            border-color: $blue !important;
 
             &.checkmark {
-                background-color: $blue;
-                color: $white;
+                background-color: $blue !important;
+                color: $white !important;
             }
         }
 
         &--green {
             @extend .leaderboard__city;
-            color: $green;
-            border-color: $green;
+            color: $green !important;
+            border-color: $green !important;
 
             &.checkmark {
-                background-color: $green;
-                color: $white;
+                background-color: $green !important;
+                color: $white !important;
             }
         }
 
         &--yellow {
             @extend .leaderboard__city;
-            color: $yellow;
-            border-color: $yellow;
+            color: $yellow !important;
+            border-color: $yellow !important;
             
             &.checkmark {
-                background-color: $yellow;
-                color: $white;
+                background-color: $yellow !important;
+                color: $white !important;
             }
         }
 
         &--pink {
             @extend .leaderboard__city;
-            color: $pink;
-            border-color: $pink;
+            color: $pink !important;
+            border-color: $pink !important;
 
             &.checkmark {
-                background-color: $pink;
-                color: $white;
+                background-color: $pink !important;
+                color: $white !important;
             }
         }
     }
@@ -149,7 +153,7 @@
     &__next {
         display: flex;
         align-items: flex-end;
-
+        cursor: pointer;
         svg {
             width: 280px;
         }
@@ -220,6 +224,22 @@
         background-repeat: no-repeat;
         box-shadow : 5.28px 5.28px 3.77px rgba(155, 155, 155, 0.75);
         z-index: 2;
+        &.marta{
+            background: #fff url('/wp-content/plugins/learndash-subsriber/assets/img/marta-emma.jpg') no-repeat !important; 
+            background-position: center center !important;
+        }
+        &.kaleb{
+            background: #fff url('/wp-content/plugins/learndash-subsriber/assets/img/kaleb-cherish.jpg') no-repeat !important; 
+            background-position: center center !important;
+        }
+        &.dominique{
+            background: #fff url('/wp-content/plugins/learndash-subsriber/assets/img/dominique-elijah.jpg') no-repeat !important; 
+            background-position: center center !important;
+        }
+        &.luke{
+            background: #fff url('/wp-content/plugins/learndash-subsriber/assets/img/luke-dave.jpg') no-repeat !important; 
+            background-position: center center !important;
+        }
     }
 
     &__names {

@@ -38,7 +38,7 @@
       grid-template-columns: 1fr 400px;
   -ms-grid-rows: 180px auto;
       grid-template-rows: 180px auto;
-      grid-template-areas: 'leaderboard__header leaderboard__header' 'leaderboard__rankings leaderboard__cities' 'leaderboard__footer leaderboard__footer';
+      grid-template-areas: 'leaderboard__header leaderboard__header' 'leaderboard__rankings leaderboard__cities' 'leaderboard__footer leaderboard__footer';
   -webkit-column-gap: 40px;
           column-gap: 40px;
   padding: 0 90px;
@@ -71,6 +71,7 @@
   font-size: 40px;
   margin-right: 200px;
   color: #4C4C4C;
+  cursor: pointer;
 }
 
 .leaderboard__rankings {
@@ -133,52 +134,54 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 200px;
-  height: 60px;
-  font-size: 28px;
+  width: 300px;
+  height: 65px;
   border: 4px solid;
   border-radius: 15px;
   background-color: #fff;
+  text-align: center;
+  padding: 9px !important;
+  font-size: 22px !important;
 }
 
 .leaderboard__city--blue {
-  color: #00b0ea;
-  border-color: #00b0ea;
+  color: #00b0ea !important;
+  border-color: #00b0ea !important;
 }
 
 .leaderboard__city--blue.checkmark {
-  background-color: #00b0ea;
-  color: #fff;
+  background-color: #00b0ea !important;
+  color: #fff !important;
 }
 
 .leaderboard__city--green {
-  color: #1baf57;
-  border-color: #1baf57;
+  color: #1baf57 !important;
+  border-color: #1baf57 !important;
 }
 
 .leaderboard__city--green.checkmark {
-  background-color: #1baf57;
-  color: #fff;
+  background-color: #1baf57 !important;
+  color: #fff !important;
 }
 
 .leaderboard__city--yellow {
-  color: #f9da47;
-  border-color: #f9da47;
+  color: #f9da47 !important;
+  border-color: #f9da47 !important;
 }
 
 .leaderboard__city--yellow.checkmark {
-  background-color: #f9da47;
-  color: #fff;
+  background-color: #f9da47 !important;
+  color: #fff !important;
 }
 
 .leaderboard__city--pink {
-  color: #ef0088;
-  border-color: #ef0088;
+  color: #ef0088 !important;
+  border-color: #ef0088 !important;
 }
 
 .leaderboard__city--pink.checkmark {
-  background-color: #ef0088;
-  color: #fff;
+  background-color: #ef0088 !important;
+  color: #fff !important;
 }
 
 .leaderboard .checkmark:before {
@@ -200,6 +203,7 @@
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
+  cursor: pointer;
 }
 
 .leaderboard__next svg {
@@ -292,6 +296,26 @@
   -webkit-box-shadow: 5.28px 5.28px 3.77px rgba(155, 155, 155, 0.75);
           box-shadow: 5.28px 5.28px 3.77px rgba(155, 155, 155, 0.75);
   z-index: 2;
+}
+
+.player__thumbnail.marta {
+  background: #fff url("/wp-content/plugins/learndash-subsriber/assets/img/marta-emma.jpg") no-repeat !important;
+  background-position: center center !important;
+}
+
+.player__thumbnail.kaleb {
+  background: #fff url("/wp-content/plugins/learndash-subsriber/assets/img/kaleb-cherish.jpg") no-repeat !important;
+  background-position: center center !important;
+}
+
+.player__thumbnail.dominique {
+  background: #fff url("/wp-content/plugins/learndash-subsriber/assets/img/dominique-elijah.jpg") no-repeat !important;
+  background-position: center center !important;
+}
+
+.player__thumbnail.luke {
+  background: #fff url("/wp-content/plugins/learndash-subsriber/assets/img/luke-dave.jpg") no-repeat !important;
+  background-position: center center !important;
 }
 
 .player__names {
@@ -389,4 +413,82 @@
 
 .player--pink .player__thumbnail {
   border-color: #ef0088;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  -webkit-transition: opacity 500ms;
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.overlay.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.content {
+  padding: 20px;
+  color: black;
+}
+
+.d-none {
+  display: none;
+}
+
+.popup {
+  margin: 2% auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 90%;
+  position: relative;
+  -webkit-transition: all 2s ease-in-out;
+  transition: all 2s ease-in-out;
+  color: black;
+  display: block;
+  overflow-y: auto;
+  height: 90%;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+
+.popup .close:hover {
+  color: #06D85F;
+}
+
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 700px) {
+  .box {
+    width: 70%;
+  }
+  .popup {
+    width: 70%;
+  }
 }

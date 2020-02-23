@@ -12,6 +12,8 @@ class BoardPage {
    */
   private $_fields = [];
 
+  private $_template = LDSUBSCRIBER_PATH.'/app/view/leaderboard.html';
+
   function __construct($noenqueue=false){
     // 
     // include validate and jquery scripts
@@ -62,20 +64,18 @@ class BoardPage {
 
     echo '</section>';
 
+    // 
+    // load template from file
+    // 
+    $doc = new \DOMDocument();
+    $doc->loadHTMLFile($this->_template);
+
     echo '<div id="LDS-popup" class="overlay">
-            <div class="popup">
-              <h2>Hey!</h2>
-              <a class="close" href="#">&times;</a>
-              <div class="content">
-                <p>Quiz finished!</p>
-                <p>Your score: <span class="correct"></span>/<span class="all"></span>  </p>
-                <p>Your correct answers: <span class="correct"></span> </p>
-                <p>Your earned points: <span class="points"></span> </p>
-              </div>
-              <div class="content-after">
-              </div>
-            </div>
+            <div class="popup">';
+    echo $doc->saveHTML();
+    echo '  </div>
           </div>';
+
     // 
     // return data
     // 

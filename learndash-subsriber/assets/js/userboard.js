@@ -55,7 +55,7 @@ jQuery(document).ready(function($) {
     //
     let popup = $("#LDS-popup");
     popup
-      .find("a.close")
+      .find(".leaderboard__exit")
       .off("click")
       .on("click", function(ev) {
         popup.removeClass("active");
@@ -123,14 +123,29 @@ jQuery(document).ready(function($) {
     });
 
     // fill div with order
-    let _div = $('<div class="leaderboard"></div>');
-    $.each( sortable, function(i,obj){
-      _div.prepend( $('<div >'+obj[0]+' / '+obj[1]+'</div>') );
-    } );
+    // let _div = $('<div class="leaderboard"></div>');   
+    // $.each( sortable, function(i,obj){
+    //   _div.prepend( $('<div >'+obj[0]+' / '+obj[1]+'</div>') );
+    // } );
 
     // insert in popup
     let popup = $("#LDS-popup");
-    popup.find(".content").after(_div);
+
+    // iterate over each player
+    let len = popup.find('.leaderboard__player').length;
+    popup.find('.leaderboard__player').each(function(i,obj){
+      let j = len - i-1;
+      if ( typeof sortable[j] !== undefined ){
+        // set name
+        $(obj).find('.player__thumbnail').addClass(sortable[j][0]);
+        // set score
+        $(obj).find('.player__names').text(sortable[j][0]);
+        // set class
+        $(obj).find('.player__points').text(sortable[j][1]);
+      }
+    });
+
+    // popup.find(".content").after(_div);
   }
 
   /**
@@ -164,12 +179,38 @@ jQuery(document).ready(function($) {
       let popup = $("#LDS-popup");
       // popup.addClass('active');
 
+      // classes for modules
+      let classes = ['leaderboard__city--yellow',
+                     'leaderboard__city--pink',
+                     'leaderboard__city--blue',
+                     'leaderboard__city--green',
+                    ];
+      // remove unuser elements from div
+      _div.find('#learndash_course_content_title, #lesson_heading').remove();
+      // add class from list to cities
+      _div.find('#lessons_list > div').each(function(i,obj){
+        let a = $(obj).find('a');
+        let j = i % classes.length ;
+        if ( !a.hasClass('notcompleted') ) {
+          a.addClass('checkmark');
+        }
+        a.addClass(classes[j]);
+      });
+
+
+      popup.find(".leaderboard__cities--all").html(_div);
       // if next-link empty - show all courses
       if (resp.next_post == "") {
-        popup.find(".content-after ").html(_div);
+        popup.find('.leaderboard__next').addClass('d-none');
       } else {
-        let lnk = $('<a href="' + resp.next_post + '">Next module </a>');
-        popup.find(".content-after ").html(lnk);
+        popup.find('.leaderboard__next')
+             .off('click')
+             .on('click',function(ev){
+              window.location.href=resp.next_post;
+              return;
+             });
+        // let lnk = $('<a href="' + resp.next_post + '">Next module </a>');
+        // popup.find(".content-after ").html(lnk);
       }
     });
   }
