@@ -38,7 +38,7 @@
       grid-template-columns: 1fr 400px;
   -ms-grid-rows: 180px auto;
       grid-template-rows: 180px auto;
-      grid-template-areas: 'leaderboard__header leaderboard__header' 'leaderboard__rankings leaderboard__cities' 'leaderboard__footer leaderboard__footer';
+      grid-template-areas: 'leaderboard__header leaderboard__header' 'leaderboard__rankings leaderboard__cities' 'leaderboard__footer leaderboard__footer';
   -webkit-column-gap: 40px;
           column-gap: 40px;
   padding: 0 90px;
@@ -135,13 +135,13 @@
       -ms-flex-align: center;
           align-items: center;
   width: 300px;
-  height: 65px;
+  height: 60px;
+  font-size: 24px;
   border: 4px solid;
   border-radius: 15px;
   background-color: #fff;
   text-align: center;
   padding: 9px !important;
-  font-size: 22px !important;
 }
 
 .leaderboard__city--blue {
@@ -200,6 +200,9 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
@@ -207,7 +210,8 @@
 }
 
 .leaderboard__next svg {
-  width: 280px;
+  width: 300px;
+  height: auto;
 }
 
 .leaderboard__next path {
@@ -455,12 +459,6 @@
   display: block;
   overflow-y: auto;
   height: 90%;
-}
-
-.popup h2 {
-  margin-top: 0;
-  color: #333;
-  font-family: Tahoma, Arial, sans-serif;
 }
 
 .popup .close {

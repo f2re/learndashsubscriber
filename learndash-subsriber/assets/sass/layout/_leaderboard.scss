@@ -84,14 +84,13 @@
         justify-content: center;
         align-items: center;
         width: 300px;
-        height: 65px;
-        // font-size: 28px;
+        height: 60px;
+        font-size: 24px;
         border: 4px solid;
         border-radius: 15px;
         background-color: $white;
         text-align: center;
         padding: 9px !important;
-        font-size: 22px !important;
 
         &--blue {
             @extend .leaderboard__city;
@@ -152,10 +151,13 @@
 
     &__next {
         display: flex;
+        justify-content: center;
         align-items: flex-end;
         cursor: pointer;
+
         svg {
-            width: 280px;
+            width: 300px;
+            height: auto;
         }
 
         path {            
@@ -224,6 +226,7 @@
         background-repeat: no-repeat;
         box-shadow : 5.28px 5.28px 3.77px rgba(155, 155, 155, 0.75);
         z-index: 2;
+
         &.marta{
             background: #fff url('/wp-content/plugins/learndash-subsriber/assets/img/marta-emma.jpg') no-repeat !important; 
             background-position: center center !important;
