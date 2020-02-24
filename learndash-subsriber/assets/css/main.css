@@ -17,6 +17,13 @@
   font-style: normal;
 }
 
+/*
+ * Reset unnecessary plugin styles
+ */
+#learndash_lessons > div > div, #learndash_quizzes > div > div {
+  border: none !important;
+}
+
 .background {
   display: fixed;
   position: absolute;
@@ -38,7 +45,7 @@
       grid-template-columns: 1fr 400px;
   -ms-grid-rows: 180px auto;
       grid-template-rows: 180px auto;
-      grid-template-areas: 'leaderboard__header leaderboard__header' 'leaderboard__rankings leaderboard__cities' 'leaderboard__footer leaderboard__footer';
+      grid-template-areas: 'leaderboard__header leaderboard__header' 'leaderboard__rankings leaderboard__cities' 'leaderboard__footer leaderboard__footer';
   -webkit-column-gap: 40px;
           column-gap: 40px;
   padding: 0 90px;
@@ -108,7 +115,7 @@
   display: flex;
 }
 
-.leaderboard__cities {
+.leaderboard__cities #lesson-list {
   -ms-grid-row: 2;
   -ms-grid-column: 2;
   grid-area: leaderboard__cities;
@@ -137,7 +144,7 @@
   width: 300px !important;
   height: 60px;
   font-size: 24px !important;
-  border: 4px solid;
+  border: 4px solid !important;
   border-radius: 15px;
   background-color: #fff;
   text-align: center;
