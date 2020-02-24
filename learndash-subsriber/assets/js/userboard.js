@@ -216,11 +216,13 @@ jQuery(document).ready(function($) {
       // add class from list to cities
       _div.find('#lessons_list > div').each(function(i,obj){
         let a = $(obj).find('a');
+        let _h = a.parent();
         let j = i % classes.length ;
+        _h.html( a.text() );
         if ( !a.hasClass('notcompleted') ) {
-          a.addClass('checkmark');
+          _h.addClass('checkmark');
         }
-        a.addClass(classes[j]);
+        _h.addClass(classes[j]);
       });
 
 

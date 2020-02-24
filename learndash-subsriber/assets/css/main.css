@@ -38,7 +38,7 @@
       grid-template-columns: 1fr 400px;
   -ms-grid-rows: 180px auto;
       grid-template-rows: 180px auto;
-      grid-template-areas: 'leaderboard__header leaderboard__header' 'leaderboard__rankings leaderboard__cities' 'leaderboard__footer leaderboard__footer';
+      grid-template-areas: 'leaderboard__header leaderboard__header' 'leaderboard__rankings leaderboard__cities' 'leaderboard__footer leaderboard__footer';
   -webkit-column-gap: 40px;
           column-gap: 40px;
   padding: 0 90px;
@@ -124,9 +124,9 @@
 }
 
 .leaderboard__city, .leaderboard__city--blue, .leaderboard__city--green, .leaderboard__city--yellow, .leaderboard__city--pink {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
   position: relative;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -134,9 +134,9 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 300px;
+  width: 300px !important;
   height: 60px;
-  font-size: 24px;
+  font-size: 24px !important;
   border: 4px solid;
   border-radius: 15px;
   background-color: #fff;
