@@ -3,7 +3,7 @@ jQuery(document).ready(function($) {
   let users_points = [];
   let user_name    = 'Anonim';
   let audio_files  = [];
-  
+  let mytimer        = false;
   init();
 
   var observer = new MutationObserver(function(mutations) {
@@ -49,7 +49,23 @@ jQuery(document).ready(function($) {
    */
   function init() {
     // wait for iframes loaded
-    iframes_loaded();
+    //iframes_loaded();
+
+    // set time interval to check if iframe loaded
+    mytimer = setInterval( function(){
+      // console.log('timer..');
+      let item = $("iframe")
+        .contents()
+        .find("#panel-outline li a.cs-listitem")
+        .last();
+      if ( item.length>0 ){
+        clearInterval(mytimer);
+        observer.observe(item[0], {
+          attributes: true
+        });
+        $("iframe").off("hover");
+      }
+    },2000 );
 
     //
     // hide popup event
@@ -75,10 +91,10 @@ jQuery(document).ready(function($) {
    * when iframe loaded
    * @return {[type]} [description]
    */
-  function iframes_loaded() {
+  function iframes_loaded(force=false) {
     let iframes = $("iframe");
 
-    $("iframe").hover(function() {
+    iframes.hover(function() {
       let item = $(this)
         .contents()
         .find("#panel-outline li a.cs-listitem")
@@ -93,6 +109,8 @@ jQuery(document).ready(function($) {
     });
     return;
   }
+
+
 
   /**
    * get dirty data from body attrs in iframe

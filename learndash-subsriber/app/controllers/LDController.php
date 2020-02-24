@@ -14,6 +14,17 @@ class LDController
   {
     //register api class
     add_action('rest_api_init', array($this, 'api'));
+    // add action to mark post as completed
+    add_action("learndash_lesson_completed", array($this,'mark_as_completed'), 5, 1);
+  }
+
+  /**
+   * mark users meta that lesson is completed
+   */
+  public function mark_as_completed( $user,    $course=0,    $post=0,    $progress=0  ){
+    print_r($user);
+    $meta_key = "postid_$post->ID";
+    update_user_meta( $user->ID, $meta_key, 1 );
   }
 
   /*
@@ -70,20 +81,20 @@ class LDController
     // get users score from post_meta 
     // 
     $users              = [];
-    $users['marta']     = get_field('player_marta', $post_id);
-    $users['dominique'] = get_field('player_dominique', $post_id);
-    $users['kaleb']     = get_field('player_kaleb', $post_id);
-    $users['luke']      = get_field('player_luke', $post_id);
+    $users['marta']     = get_field('player_marta', $postid);
+    $users['dominique'] = get_field('player_dominique', $postid);
+    $users['kaleb']     = get_field('player_kaleb', $postid);
+    $users['luke']      = get_field('player_luke', $postid);
 
     //
     // audio data; since this is get_course_list() do we want to extend this function and rename it?
     //
     $audio            = [];
-    $audio['5']       = get_field('5_points', $post_id)['url'];
-    $audio['6']       = get_field('6_points', $post_id)['url'];
-    $audio['7']       = get_field('7_points', $post_id)['url'];
-    $audio['8']       = get_field('8_points', $post_id)['url'];
-    $audio['9']       = get_field('9_points', $post_id)['url'];
+    $audio['5']       = get_field('5_points', $postid)['url'];
+    $audio['6']       = get_field('6_points', $postid)['url'];
+    $audio['7']       = get_field('7_points', $postid)['url'];
+    $audio['8']       = get_field('8_points', $postid)['url'];
+    $audio['9']       = get_field('9_points', $postid)['url'];
 
     return [
       "next_post"          => learndash_next_post_link('', true, $post),
@@ -92,6 +103,7 @@ class LDController
       "users"              => $users,
       "you"                => $current_user->first_name.' '.$current_user->last_name,
       "audio"              => $audio,
+      "course_completed_user"   => get_user_meta($userid,"postid_$postid",true),
       "course_completed"   => $lesson_activity->activity_status
     ];
     // return [ "res"=>learndash_get_next_lesson_redirect($post) ];
