@@ -240,6 +240,12 @@ jQuery(document).ready(function($) {
         // let lnk = $('<a href="' + resp.next_post + '">Next module </a>');
         // popup.find(".content-after ").html(lnk);
       }
+
+      //console.log(resp);
+      // check if lesson completed, then popup window!
+      if ( resp.course_completed ){
+        show_leaders_points(0,0,0);
+      }
     });
   }
 
@@ -279,6 +285,8 @@ jQuery(document).ready(function($) {
       $("#leadersection-subscriber form").text(
         percentage / courses + " percentage courses complete "
       );
+      
+
     });
   }
 

@@ -50,6 +50,7 @@ class BoardPage {
       
     }
 
+
     // 
     //  star record
     // 

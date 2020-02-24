@@ -51,6 +51,16 @@ class LDController
     $post      =  get_post($postid);
     $course_id = learndash_get_course_id($postid);
 
+    // get lesson activity
+    $lesson_args     = array(
+      'course_id'     => $course_id,
+      'user_id'       => $userid,
+      'post_id'       => $postid,
+      'activity_type' => 'lesson',
+    );
+    $lesson_activity = \learndash_get_user_activity( $lesson_args );
+    // print_r($lesson_activity);
+    
     // 
     // current user
     // 
@@ -81,7 +91,8 @@ class LDController
       "all_course_content" => do_shortcode('[course_content course_id="' . $course_id . '"]'),
       "users"              => $users,
       "you"                => $current_user->first_name.' '.$current_user->last_name,
-      "audio"              => $audio
+      "audio"              => $audio,
+      "course_completed"   => $lesson_activity->activity_status
     ];
     // return [ "res"=>learndash_get_next_lesson_redirect($post) ];
 
