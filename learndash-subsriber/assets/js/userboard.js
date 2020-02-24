@@ -2,6 +2,7 @@ jQuery(document).ready(function($) {
   // save users points in global variable
   let users_points = [];
   let user_name    = 'Anonim';
+  let audio_files  = [];
   
   init();
 
@@ -34,9 +35,9 @@ jQuery(document).ready(function($) {
             points = parseInt(_body.attr("points"));
           }
 
-          dirty_data(correct, incorrect, points);
+          // dirty_data(correct, incorrect, points);
           // console.log("Class attribute changed to:", attributeValue);
-          show_leaders_points(points)
+          show_leaders_points(points,correct, incorrect)
         }
       }
     });
@@ -101,9 +102,9 @@ jQuery(document).ready(function($) {
     let popup = $("#LDS-popup");
     popup.addClass("active");
 
-    popup.find(".content .correct").text(correct);
-    popup.find(".content .all").text(correct + incorrect);
-    popup.find(".content .points").text(points);
+    // popup.find(".content .correct").text(correct);
+    // popup.find(".content .all").text(correct + incorrect);
+    // popup.find(".content .points").text(points);
 
     return;
   }
@@ -111,7 +112,7 @@ jQuery(document).ready(function($) {
   /**
    * draw ordering points leaderboard
    */
-  function  show_leaders_points(points){
+  function  show_leaders_points(points, correct, incorrect){
     users_points['you'] = points;
     var sortable = [];
     for (var item in users_points) {
@@ -130,6 +131,7 @@ jQuery(document).ready(function($) {
 
     // insert in popup
     let popup = $("#LDS-popup");
+    popup.addClass("active");
 
     // iterate over each player
     let len = popup.find('.leaderboard__player').length;
@@ -144,6 +146,28 @@ jQuery(document).ready(function($) {
         $(obj).find('.player__points').text(sortable[j][1]);
       }
     });
+
+    // calculate percentage 
+    let audio_ind = 0;
+    if ((correct+incorrect)!=0){
+      audio_ind = parseInt(correct*10/(correct+incorrect));
+      // console.log("points:",audio_ind);
+    }
+
+    let keys = Object.keys(audio_files);
+    
+    if ( audio_ind<keys[0] ){
+      audio_ind=keys[0];
+    }
+    if ( audio_ind>keys[keys.length-1] ){
+      audio_ind=keys[keys.length-1];
+    }
+
+    // play sound if exist file
+    if ( typeof audio_files[audio_ind]!==undefined ){
+      var audio = new Audio(audio_files[audio_ind]);
+      audio.play();
+    }
 
     // popup.find(".content").after(_div);
   }
@@ -172,6 +196,8 @@ jQuery(document).ready(function($) {
       users_points = resp.users;
       // save username
       user_name = resp.you;
+      // get audio
+      audio_files = resp.audio;
       
       // let url = _div.find('a').attr('href');
       // console.log(url);
@@ -198,7 +224,7 @@ jQuery(document).ready(function($) {
       });
 
 
-      popup.find(".leaderboard__cities--all").html(_div);
+      popup.find(".leaderboard__cities").html(_div);
       // if next-link empty - show all courses
       if (resp.next_post == "") {
         popup.find('.leaderboard__next').addClass('d-none');

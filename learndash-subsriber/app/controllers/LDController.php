@@ -65,24 +65,27 @@ class LDController
     $users['kaleb']     = get_field('player_kaleb', $post_id);
     $users['luke']      = get_field('player_luke', $post_id);
 
+    //
+    // audio data; since this is get_course_list() do we want to extend this function and rename it?
+    //
+    $audio            = [];
+    $audio['5']       = get_field('5_points', $post_id)['url'];
+    $audio['6']       = get_field('6_points', $post_id)['url'];
+    $audio['7']       = get_field('7_points', $post_id)['url'];
+    $audio['8']       = get_field('8_points', $post_id)['url'];
+    $audio['9']       = get_field('9_points', $post_id)['url'];
+
     return [
       "next_post"          => learndash_next_post_link('', true, $post),
       "prev_post"          => learndash_previous_post_link('', true),
       "all_course_content" => do_shortcode('[course_content course_id="' . $course_id . '"]'),
       "users"              => $users,
-      "you"                => $current_user->first_name.' '.$current_user->last_name
+      "you"                => $current_user->first_name.' '.$current_user->last_name,
+      "audio"              => $audio
     ];
     // return [ "res"=>learndash_get_next_lesson_redirect($post) ];
 
-    //
-    // audio data; since this is get_course_list() do we want to extend this function and rename it?
-    //
-    $audio            = [];
-    $audio['5']       = get_field('5_points', $post_id);
-    $audio['6']       = get_field('6_points', $post_id);
-    $audio['7']       = get_field('7_points', $post_id);
-    $audio['8']       = get_field('8_points', $post_id);
-    $audio['9']       = get_field('9_points', $post_id);
+    
   }
 
   /**
