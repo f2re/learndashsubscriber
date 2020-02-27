@@ -33,6 +33,7 @@
   right: 0;
   bottom: 0;
   left: 0;
+  background: url("../img/leaderboard-bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   z-index: -1;
@@ -45,7 +46,7 @@
       grid-template-columns: 1fr 400px;
   -ms-grid-rows: 180px auto;
       grid-template-rows: 180px auto;
-      grid-template-areas: 'leaderboard__header leaderboard__header' 'leaderboard__rankings leaderboard__cities' 'leaderboard__footer leaderboard__footer';
+      grid-template-areas: 'leaderboard__header leaderboard__header' 'leaderboard__rankings leaderboard__cities';
   -webkit-column-gap: 40px;
           column-gap: 40px;
   padding: 0 90px;
@@ -115,7 +116,7 @@
   display: flex;
 }
 
-.leaderboard__cities #lesson-list {
+.leaderboard__cities #lessons-list {
   -ms-grid-row: 2;
   -ms-grid-column: 2;
   grid-area: leaderboard__cities;
@@ -203,7 +204,7 @@
   background: url("../img/checkmark.svg") no-repeat;
 }
 
-.leaderboard__next {
+.leaderboard__next, .leaderboard__replay {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -216,24 +217,21 @@
   cursor: pointer;
 }
 
-.leaderboard__next svg {
+.leaderboard__next svg, .leaderboard__replay svg {
   width: 300px;
   height: auto;
 }
 
-.leaderboard__next path {
+.leaderboard__next path, .leaderboard__replay path {
   -webkit-box-shadow: 5.28px 5.28px 3.77px rgba(155, 155, 155, 0.75);
           box-shadow: 5.28px 5.28px 3.77px rgba(155, 155, 155, 0.75);
 }
 
-.leaderboard__next text {
+.leaderboard__next text, .leaderboard__replay text {
   font-family: "Permanent Marker";
 }
 
 .leaderboard__footer {
-  -ms-grid-row: 3;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
   grid-area: leaderboard__footer;
 }
 

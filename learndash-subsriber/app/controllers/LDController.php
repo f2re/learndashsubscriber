@@ -43,6 +43,81 @@ class LDController
       'methods'  => 'POST',
       'callback' => array($this, 'get_course_list'),
     ));
+
+    register_rest_route('ldsubscriber/v1', '/reset_course/', array(
+      'methods'  => 'POST',
+      'callback' => array($this, 'reset_course'),
+    ));
+
+
+  }
+
+  /**
+   * API to reset course data for users
+   * users points and course status
+   *
+   * @return void
+   */
+  public function reset_course()
+  {
+    $postid = $_POST['postid']; 
+    $userid = $_POST['userid'];
+    global $post;
+    $post      =  get_post($postid);
+    $course_id = learndash_get_course_id($postid);
+
+    // reset lesson activity
+    $args     = array(
+      'course_id'     => $course_id,
+      'user_id'       => $userid,
+      // 'post_id'       => $postid,
+      'activity_type' => 'lesson',
+    );
+    // $lesson_activity = \learndash_get_user_activity( $args );
+    // print_r($lesson_activity);
+    global $wpdb;
+
+    $complete_key = "course_completed_{$course_id}";
+		$sql_string   = $wpdb->prepare("SELECT user_id, meta_key, meta_value FROM {$wpdb->usermeta} WHERE ( meta_key = '_sfwd-course_progress' OR meta_key = '{$complete_key}' ) AND user_id=$userid ");
+
+    // $sql_string = $wpdb->prepare("SELECT user_id, meta_key, meta_value FROM $wpdb->usermeta WHERE meta_key LIKE '%' AND user_id=$userid ");
+    $status = $wpdb->get_results( $sql_string );	
+    
+    foreach ( $status as $data ){
+      $meta_key   = $data->meta_key;
+      $meta_value = $data->meta_value;
+      if ( $complete_key === $meta_key ) {				
+        delete_user_meta( $userid, $meta_key );
+			} elseif ( '_sfwd-course_progress' === $meta_key ) {
+        $progress = unserialize( $meta_value );
+        // print_r($progress);
+				if ( ! empty( $progress ) && ! empty( $progress[ $course_id ] ) )  {
+          $progress[ $course_id ] = array();
+          // print_r(serialize($progress));
+          update_user_meta( $userid, $meta_key, serialize($progress) );
+				}
+			}
+    }
+
+
+    // 
+    // 
+    //  DELETING ORIGINAL LEARNDASH DATA OF COURSE
+    // 
+    // 
+    $sql_str = $wpdb->prepare("SELECT * FROM " . \LDLMS_DB::get_table_name( 'user_activity' ) . " WHERE user_id=%d AND course_id=%d  AND activity_type=%s ", 
+                              $args['user_id'], 
+                              $args['course_id'], 
+                              $args['activity_type'] );
+
+    $activity = $wpdb->get_results( $sql_str );	
+    // count of deleted activities
+    $deleted = 0;
+    foreach ($activity as $_act){
+      \learndash_delete_user_activity( $_act->activity_id );
+      $deleted++;
+    }
+    return ["deleted"=>$deleted];
   }
 
   /**

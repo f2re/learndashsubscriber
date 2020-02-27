@@ -37,11 +37,25 @@ jQuery(document).ready(function($) {
 
           // dirty_data(correct, incorrect, points);
           // console.log("Class attribute changed to:", attributeValue);
-          show_leaders_points(points,correct, incorrect)
+          show_leaders_points(points,correct, incorrect);
+          // clear all points 
+          clear_points();
         }
       }
     });
   });
+
+  /**
+   * clear all points in iframe
+   */
+  function clear_points(){
+    let _body = $("iframe")
+        .contents()
+        .find('body');
+    _body.attr("correct",0);
+    _body.attr("incorrect",0);
+    _body.attr("points",0);
+  }
 
   /**
    * initialisation function
@@ -232,23 +246,65 @@ jQuery(document).ready(function($) {
       // remove unuser elements from div
       _div.find('#learndash_course_content_title, #lesson_heading').remove();
       // add class from list to cities
-      _div.find('#lessons_list > div').each(function(i,obj){
-        let a = $(obj).find('a');
-        let _h = a.parent();
-        let j = i % classes.length ;
-        _h.html( a.text() );
-        if ( !a.hasClass('notcompleted') ) {
-          _h.addClass('checkmark');
-        }
-        _h.addClass(classes[j]);
-      });
+      
 
 
       popup.find(".leaderboard__cities").html(_div);
       // if next-link empty - show all courses
       if (resp.next_post == "") {
         popup.find('.leaderboard__next').addClass('d-none');
+        popup.find('.leaderboard__replay').removeClass('d-none');
+
+        let first_course = '';
+        // add classes to links
+        _div.find('#lessons_list > div').each(function(i,obj){
+          let a = $(obj).find('a');
+          let j = i % classes.length ;
+
+          // grab first ourse url to redirect
+          if ( first_course=='' ){
+            first_course=a.attr('href');
+          }
+
+          if ( !a.hasClass('notcompleted') ) {
+            a.addClass('checkmark');
+          }
+          a.addClass(classes[j]);
+        });
+
+        // assign click event to reset course button
+        popup.find('.leaderboard__replay')
+             .off('click')
+             .on('click',function(ev){
+              $.ajax({
+                url: "/wp-json/ldsubscriber/v1/reset_course",
+                method: "POST",
+                data: { postid: $("#leadersection-subscriber").attr("postid"),
+                        userid: $("#leadersection-subscriber").attr("userid"),
+                      }
+              }).done(function(resp) {
+               
+                if (first_course!=''){
+                  window.location = first_course;
+                }
+
+              });
+             });
+
       } else {
+
+        // remove a links
+        _div.find('#lessons_list > div').each(function(i,obj){
+          let a = $(obj).find('a');
+          let _h = a.parent();
+          let j = i % classes.length ;
+          _h.html( a.text() );
+          if ( !a.hasClass('notcompleted') ) {
+            _h.addClass('checkmark');
+          }
+          _h.addClass(classes[j]);
+        });
+
         popup.find('.leaderboard__next')
              .off('click')
              .on('click',function(ev){
