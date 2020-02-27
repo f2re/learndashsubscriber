@@ -18,8 +18,7 @@
     grid-template-columns: 1fr 400px;
     grid-template-rows: 180px auto;
     grid-template-areas:   'leaderboard__header leaderboard__header'
-                           'leaderboard__rankings leaderboard__cities'
-                           'leaderboard__footer leaderboard__footer';
+                           'leaderboard__rankings leaderboard__cities';
     column-gap: 40px;
     padding: 0 90px;
     font-family: $primary-font;
@@ -70,7 +69,7 @@
         display: flex;
     }
 
-    &__cities #lesson-list {
+    &__cities #lessons-list {
         grid-area: leaderboard__cities;
         display: grid;
         justify-content: center;
