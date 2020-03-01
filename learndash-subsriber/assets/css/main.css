@@ -409,6 +409,11 @@
   background-position: center center !important;
 }
 
+.player__thumbnail.player {
+  background: #fff url("/wp-content/plugins/learndash-subsriber/assets/img/player-avatar.png") no-repeat !important;
+  background-position: center center !important;
+}
+
 .player__names {
   -ms-grid-row: 1;
   -ms-grid-column: 3;

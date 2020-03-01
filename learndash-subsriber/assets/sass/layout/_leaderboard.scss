@@ -231,20 +231,28 @@
         box-shadow : 5.28px 5.28px 3.77px rgba(155, 155, 155, 0.75);
         z-index: 2;
 
-        &.marta{
+        &.marta {
             background: #fff url('/wp-content/plugins/learndash-subsriber/assets/img/marta-emma.jpg') no-repeat !important; 
             background-position: center center !important;
         }
-        &.kaleb{
+
+        &.kaleb {
             background: #fff url('/wp-content/plugins/learndash-subsriber/assets/img/kaleb-cherish.jpg') no-repeat !important; 
             background-position: center center !important;
         }
-        &.dominique{
+
+        &.dominique {
             background: #fff url('/wp-content/plugins/learndash-subsriber/assets/img/dominique-elijah.jpg') no-repeat !important; 
             background-position: center center !important;
         }
-        &.luke{
+
+        &.luke {
             background: #fff url('/wp-content/plugins/learndash-subsriber/assets/img/luke-dave.jpg') no-repeat !important; 
+            background-position: center center !important;
+        }
+
+        &.player {
+            background: #fff url('/wp-content/plugins/learndash-subsriber/assets/img/player-avatar.png') no-repeat !important; 
             background-position: center center !important;
         }
     }
