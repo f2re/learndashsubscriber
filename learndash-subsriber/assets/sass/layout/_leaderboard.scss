@@ -18,7 +18,7 @@
     grid-template-columns: 1fr 400px;
     grid-template-rows: 180px auto;
     grid-template-areas:   'leaderboard__header leaderboard__header'
-                           'leaderboard__rankings leaderboard__cities';
+                           'leaderboard__rankings leaderboard__sidebar';
     column-gap: 40px;
     padding: 0 90px;
     font-family: $primary-font;
@@ -43,14 +43,18 @@
         cursor: pointer;
     }
 
-    &__rankings {
-        grid-area: leaderboard__rankings;
-    }
-
     &__heading {
         display: flex;
         justify-content: space-between;
         max-width: 1000px;
+    }
+
+    &__rankings {
+        grid-area: leaderboard__rankings;
+    }
+
+    &__sidebar {
+        grid-area: leaderboard__sidebar;
     }
 
     &__rank {
@@ -69,24 +73,24 @@
         display: flex;
     }
 
-    &__cities #lessons-list {
+    &__cities #lessons_list {
         grid-area: leaderboard__cities;
-        display: grid;
-        justify-content: center;
-        grid-template-rows: repeat(4, 60px) 1fr;
-        row-gap: 30px;
-        margin-top: 64px;
+        display: grid !important;
+        justify-content: center !important;
+        grid-template-rows: repeat(5, 60px) 1fr !important;
+        row-gap: 30px !important;
+        margin-top: 64px !important;
     }
 
     &__city {
-        display: flex!important;
+        display: flex !important;
         position: relative;
         justify-content: center;
         align-items: center;
-        width: 300px!important;
+        width: 300px !important;
         height: 60px;
-        font-size: 24px!important;
-        border: 4px solid!important;
+        font-size: 24px !important;
+        border: 4px solid !important;
         border-radius: 15px;
         background-color: $white;
         text-align: center;
