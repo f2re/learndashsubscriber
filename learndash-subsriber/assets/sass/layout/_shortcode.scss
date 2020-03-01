@@ -15,20 +15,19 @@
       }
 }
 
-.content{
+.content {
     padding:20px;
-    color:black;
+    color:grey;
 }
 
-.d-none{
+.d-none {
     display: none;
 }
   
 .popup {
     margin: 2% auto;
     padding: 20px;
-    background: #fff;
-    border-radius: 5px;
+    background: $white;    
     width: 90%;
     position: relative;
     transition: all 2s ease-in-out;
@@ -36,6 +35,7 @@
     display: block;
     overflow-y: auto;
     height: 90%;
+    border-radius: 25px;
     
     .close {
         position: absolute;

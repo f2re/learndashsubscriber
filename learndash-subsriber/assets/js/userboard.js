@@ -89,7 +89,10 @@ jQuery(document).ready(function($) {
       .find(".leaderboard__exit")
       .off("click")
       .on("click", function(ev) {
-        popup.removeClass("active");
+        // popup.removeClass("active");
+        // we want to simply take the user to next step if they exit the modal view
+        window.location.href=resp.next_post;
+        return;
       });
 
     //
