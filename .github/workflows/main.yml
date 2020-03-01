@@ -1,14 +1,19 @@
-name: CI
-
-on: [push]
-
+on: push
+name: Publish Website
 jobs:
-  build:
-    sudo: required
+  FTP-Deploy-Action:
+    name: FTP-Deploy-Action
     runs-on: ubuntu-latest
-  
     steps:
-    - name: apt
-      run: apt-get install -y -qq lftp
-    - name: sync_ftp
-      run: lftp -e "open 35.235.124.140 -p 17771 ; user $FTP_USERNAME $FTP_PASSWORD; mirror -X .* -X .*/ --reverse --verbose --delete learndash-subsriber/ /www/senixejo_968/public/wp-content/plugins/learndash-subsriber/; bye"
+    - uses: actions/checkout@master
+      with:
+        fetch-depth: 2
+    - name: FTP-Deploy-Action
+      uses: SamKirkland/FTP-Deploy-Action@3.0.0
+      with:
+        ftp-server: sftp://35.235.124.140:17771/www/senixejo_968/public/wp-content/plugins/learndash-subsriber/
+        ftp-username: ${{ secrets.FTP_USERNAME }}
+        ftp-password: ${{ secrets.FTP_PASSWORD }}
+        git-ftp-args: --insecure
+        local-dir: learndash-subsriber
+      #run: lftp -e "open  -p 17771 ; user  $FTP_PASSWORD; mirror -X .* -X .*/ --reverse --verbose --delete learndash-subsriber/ /www/senixejo_968/public/wp-content/plugins/learndash-subsriber/; bye"
