@@ -4,7 +4,6 @@ on: [push]
 
 jobs:
   image: mwienk/docker-lftp:latest
-
   build:
     script:
       # Sync to FTP
