@@ -9,6 +9,6 @@ jobs:
   
     steps:
     - name: apt
-      run: apt-get update -qq && apt-get install -y -qq lftp
+      run: apt-get install -y -qq lftp
     - name: sync_ftp
       run: lftp -e "open 35.235.124.140 -p 17771 ; user $FTP_USERNAME $FTP_PASSWORD; mirror -X .* -X .*/ --reverse --verbose --delete learndash-subsriber/ /www/senixejo_968/public/wp-content/plugins/learndash-subsriber/; bye"
