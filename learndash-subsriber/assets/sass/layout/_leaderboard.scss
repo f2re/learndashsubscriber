@@ -22,6 +22,7 @@
     column-gap: 40px;
     padding: 0 90px;
     font-family: $primary-font;
+    background: url('/wp-content/plugins/learndash-subsriber/assets/img/leaderboard-bg.jpg') no-repeat;
 
     &__header {
         grid-area: leaderboard__header;
@@ -252,7 +253,7 @@
         }
 
         &.you {
-            background: #fff url(/wp-content/plugins/learndash-subsriber/assets/img/player-avatar.png) no-repeat !important; 
+            background: #fff url('/wp-content/plugins/learndash-subsriber/assets/img/player-avatar.png') no-repeat !important; 
             background-position: center center !important;
         }
     }

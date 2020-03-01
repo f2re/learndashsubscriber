@@ -98,6 +98,10 @@
 /*
  * Reset unnecessary plugin styles
  */
+#learndash_lessons {
+  background: transparent;
+}
+
 #learndash_lessons > div > div, #learndash_quizzes > div > div {
   border: none !important;
 }
@@ -129,6 +133,7 @@
           column-gap: 40px;
   padding: 0 90px;
   font-family: "Permanent Marker";
+  background: url("/wp-content/plugins/learndash-subsriber/assets/img/leaderboard-bg.jpg") no-repeat;
 }
 
 .leaderboard__header {
@@ -410,7 +415,7 @@
 }
 
 .player__thumbnail.you {
-  background: #fff url(/wp-content/plugins/learndash-subsriber/assets/img/player-avatar.png) no-repeat !important;
+  background: #fff url("/wp-content/plugins/learndash-subsriber/assets/img/player-avatar.png") no-repeat !important;
   background-position: center center !important;
 }
 

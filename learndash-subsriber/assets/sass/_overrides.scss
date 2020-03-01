@@ -2,6 +2,11 @@
  * Reset unnecessary plugin styles
  */
 
+ #learndash_lessons {
+     background: transparent;
+ }
+
  #learndash_lessons > div > div, #learndash_quizzes > div > div {
     border: none!important;
 }
+
