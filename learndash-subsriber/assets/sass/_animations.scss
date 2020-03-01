@@ -1,15 +1,15 @@
-.bounce {
+.bounce-2 {
     animation-name: bounce;
     animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
     animation-duration: 2s;
     animation-iteration-count: infinite;
 }
 
-.bounce:hover {
+.bounce-2:hover {
     animation-play-state: paused;
 }
 
-@keyframes bounce {
+@keyframes bounce-2 {
     0%   { transform: scale(1,1)      translateY(0); }
     10%  { transform: scale(1.1,.9)   translateY(0); }
     30%  { transform: scale(.9,1.1)   translateY(-80px); }
