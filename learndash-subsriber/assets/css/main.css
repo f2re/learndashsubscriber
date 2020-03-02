@@ -418,6 +418,7 @@
 .player__thumbnail.you {
   background: #fff url("/wp-content/plugins/learndash-subsriber/assets/img/player-avatar.png") no-repeat !important;
   background-position: center center !important;
+  background-size: cover !important;
 }
 
 .player__names {
