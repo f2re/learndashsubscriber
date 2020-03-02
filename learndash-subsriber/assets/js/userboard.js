@@ -84,7 +84,7 @@ jQuery(document).ready(function($) {
     //
     // hide popup event
     //
-    let complete = $('#.learndash_mark_complete_button');
+    let complete = $('#learndash_mark_complete_button');
     let popup = $("#LDS-popup");
     popup
       .find(".leaderboard__exit")
@@ -313,7 +313,7 @@ jQuery(document).ready(function($) {
         popup.find('.leaderboard__next')
              .off('click')
              .on('click',function(ev){
-              complete.click();
+              complete.click();git 
               window.location.href=resp.next_post;
               return;
              });
