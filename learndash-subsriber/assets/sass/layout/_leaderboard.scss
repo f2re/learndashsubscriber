@@ -23,6 +23,7 @@
     padding: 0 90px;
     font-family: $primary-font;
     background: url('/wp-content/plugins/learndash-subsriber/assets/img/leaderboard-bg.jpg') no-repeat;
+    background-size: cover;
 
     &__header {
         grid-area: leaderboard__header;

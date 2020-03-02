@@ -134,6 +134,7 @@
   padding: 0 90px;
   font-family: "Permanent Marker";
   background: url("/wp-content/plugins/learndash-subsriber/assets/img/leaderboard-bg.jpg") no-repeat;
+  background-size: cover;
 }
 
 .leaderboard__header {

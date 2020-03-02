@@ -3,7 +3,7 @@ jQuery(document).ready(function($) {
   let users_points = [];
   let user_name    = 'Anonim';
   let audio_files  = [];
-  let mytimer        = false;
+  let mytimer      = false;  
   init();
 
   var observer = new MutationObserver(function(mutations) {
@@ -84,6 +84,7 @@ jQuery(document).ready(function($) {
     //
     // hide popup event
     //
+    let complete = $('#.learndash_mark_complete_button');
     let popup = $("#LDS-popup");
     popup
       .find(".leaderboard__exit")
@@ -91,6 +92,7 @@ jQuery(document).ready(function($) {
       .on("click", function(ev) {
         // popup.removeClass("active");
         // we want to simply take the user to next step if they exit the modal view
+        complete.click();
         window.location.href=resp.next_post;
         return;
       });
@@ -311,6 +313,7 @@ jQuery(document).ready(function($) {
         popup.find('.leaderboard__next')
              .off('click')
              .on('click',function(ev){
+              complete.click();
               window.location.href=resp.next_post;
               return;
              });
