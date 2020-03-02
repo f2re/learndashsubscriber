@@ -3,7 +3,7 @@ jQuery(document).ready(function($) {
   let users_points = [];
   let user_name    = 'Anonim';
   let audio_files  = [];
-  let mytimer      = false;  
+  let mytimer      = false;
   init();
 
   var observer = new MutationObserver(function(mutations) {
@@ -90,11 +90,8 @@ jQuery(document).ready(function($) {
       .find(".leaderboard__exit")
       .off("click")
       .on("click", function(ev) {
-        // popup.removeClass("active");
-        // we want to simply take the user to next step if they exit the modal view
+        popup.removeClass("active");
         complete.click();
-        window.location.href=resp.next_post;        
-        return;
       });
 
     //
@@ -310,10 +307,11 @@ jQuery(document).ready(function($) {
           _h.addClass(classes[j]);
         });
 
+        let complete = $('#learndash_mark_complete_button');
         popup.find('.leaderboard__next')
              .off('click')
              .on('click',function(ev){
-              complete.click(); 
+               complete.click();
               window.location.href=resp.next_post;
               return;
              });
