@@ -520,6 +520,8 @@
 
 .overlay {
   position: fixed;
+  width: 100%;
+  height: 100%;
   top: 0;
   bottom: 0;
   left: 0;
@@ -553,7 +555,7 @@
   position: relative;
   -webkit-transition: all 2s ease-in-out;
   transition: all 2s ease-in-out;
-  color: black;
+  color: grey;
   display: block;
   overflow-y: auto;
   height: 90%;
