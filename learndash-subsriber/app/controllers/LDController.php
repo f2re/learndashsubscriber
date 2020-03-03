@@ -156,10 +156,14 @@ class LDController
     // get users score from post_meta 
     // 
     $users              = [];
-    $users['marta']     = get_field('player_marta', $postid);
-    $users['dominique'] = get_field('player_dominique', $postid);
-    $users['kaleb']     = get_field('player_kaleb', $postid);
-    $users['luke']      = get_field('player_luke', $postid);
+    $users['marta']['point']     = get_field('player_marta', $postid);
+    $users['marta']['name']     = get_field('group_names_4', $postid);
+    $users['dominique']['point'] = get_field('player_dominique', $postid);
+    $users['dominique']['name'] = get_field('group_names_3', $postid);
+    $users['kaleb']['point']     = get_field('player_kaleb', $postid);
+    $users['kaleb']['name']     = get_field('group_names_2', $postid);
+    $users['luke']['point']      = get_field('player_luke', $postid);
+    $users['luke']['name']      = get_field('group_names_1', $postid);
 
     //
     // audio data; since this is get_course_list() do we want to extend this function and rename it?

@@ -146,16 +146,21 @@ jQuery(document).ready(function($) {
    * draw ordering points leaderboard
    */
   function  show_leaders_points(points, correct, incorrect){
-    users_points['you'] = points;
+    users_points['you'] = { point: points, name:'You' };
     var sortable = [];
     for (var item in users_points) {
-        sortable.push([item, users_points[item]]);
+      let _v = {};
+      _v[item] = users_points[item];
+      sortable.push( _v );
     }
     // define sort function
     sortable.sort(function(a, b) {
-        return a[1] - b[1];
+      let _a = Object.keys(a)[0];
+      let _b = Object.keys(b)[0];
+      return a[_a].point - b[_b].point;
     });
-
+    console.log(sortable);
+    
     // fill div with order
     // let _div = $('<div class="leaderboard"></div>');   
     // $.each( sortable, function(i,obj){
@@ -171,12 +176,13 @@ jQuery(document).ready(function($) {
     popup.find('.leaderboard__player').each(function(i,obj){
       let j = len - i-1;
       if ( typeof sortable[j] !== undefined ){
+        let _k = Object.keys(sortable[j])[0];
         // set name
-        $(obj).find('.player__thumbnail').addClass(sortable[j][0]);
+        $(obj).find('.player__thumbnail').addClass( _k );
         // set score
-        $(obj).find('.player__names').text(sortable[j][0]);
+        $(obj).find('.player__names').text(sortable[j][_k].name);
         // set class
-        $(obj).find('.player__points').text(sortable[j][1]);
+        $(obj).find('.player__points').text(sortable[j][_k].point);
       }
     });
 
@@ -308,12 +314,13 @@ jQuery(document).ready(function($) {
 
         let complete = $('#learndash_mark_complete_button');
 
-        if ( resp.course_completed && resp.next_post!=resp.first_uncompleted_link ){
+        if ( resp.course_completed && resp.next_post!=resp.first_uncompleted_link && resp.first_uncompleted_link!=false ){
           popup.find('.leaderboard__next').addClass('d-none');
           popup.find('.leaderboard__continue').removeClass('d-none');
           popup.find('.leaderboard__continue')
               .off('click')
               .on('click',function(ev){
+                // console.log(resp.first_uncompleted_link);
                 window.location.href = resp.first_uncompleted_link;
                 return;
               });
@@ -322,6 +329,7 @@ jQuery(document).ready(function($) {
               .off('click')
               .on('click',function(ev){
                 complete.click();
+                // console.log(resp.next_post);
                 window.location.href = resp.next_post;
                 return;
               });
