@@ -128,7 +128,7 @@
       grid-template-columns: 1fr 400px;
   -ms-grid-rows: 180px auto;
       grid-template-rows: 180px auto;
-      grid-template-areas: 'leaderboard__header leaderboard__header' 'leaderboard__rankings leaderboard__sidebar';
+      grid-template-areas: 'leaderboard__header leaderboard__header' 'leaderboard__rankings leaderboard__sidebar';
   -webkit-column-gap: 40px;
           column-gap: 40px;
   padding: 0 90px;
@@ -292,7 +292,7 @@
   background: url("../img/checkmark.svg") no-repeat;
 }
 
-.leaderboard__next, .leaderboard__replay {
+.leaderboard__next, .leaderboard__replay, .leaderboard__continue {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -305,17 +305,17 @@
   cursor: pointer;
 }
 
-.leaderboard__next svg, .leaderboard__replay svg {
+.leaderboard__next svg, .leaderboard__replay svg, .leaderboard__continue svg {
   width: 300px;
   height: auto;
 }
 
-.leaderboard__next path, .leaderboard__replay path {
+.leaderboard__next path, .leaderboard__replay path, .leaderboard__continue path {
   -webkit-box-shadow: 5.28px 5.28px 3.77px rgba(155, 155, 155, 0.75);
           box-shadow: 5.28px 5.28px 3.77px rgba(155, 155, 155, 0.75);
 }
 
-.leaderboard__next text, .leaderboard__replay text {
+.leaderboard__next text, .leaderboard__replay text, .leaderboard__continue text {
   font-family: "Permanent Marker";
 }
 

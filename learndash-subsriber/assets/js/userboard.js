@@ -307,18 +307,29 @@ jQuery(document).ready(function($) {
         });
 
         let complete = $('#learndash_mark_complete_button');
-        popup.find('.leaderboard__next')
-             .off('click')
-             .on('click',function(ev){
-              complete.click();
-              window.location.href=resp.next_post;
-              return;
-             });
+
+        if ( resp.course_completed && resp.next_post!=resp.first_uncompleted_link ){
+          popup.find('.leaderboard__next').addClass('d-none');
+          popup.find('.leaderboard__continue').removeClass('d-none');
+          popup.find('.leaderboard__continue')
+              .off('click')
+              .on('click',function(ev){
+                window.location.href = resp.first_uncompleted_link;
+                return;
+              });
+        }else{
+          popup.find('.leaderboard__next')
+              .off('click')
+              .on('click',function(ev){
+                complete.click();
+                window.location.href = resp.next_post;
+                return;
+              });
+        }
         // let lnk = $('<a href="' + resp.next_post + '">Next module </a>');
         // popup.find(".content-after ").html(lnk);
       }
 
-      //console.log(resp);
       // check if lesson completed, then popup window!
       if ( resp.course_completed ){
         show_leaders_points(0,0,0);
