@@ -133,9 +133,7 @@ class StartBoardPage {
   public function enqueue_scripts(){
     // echo 'enquerue';
     wp_enqueue_script('jquery'); 
-    // wp_enqueue_script('ldsubscriber-require', LDSUBSCRIBER_URl.'assets/js/require.js',['jquery'],'1.0',true );
-    // wp_enqueue_script('ldsubscriber-useradmin', LDSUBSCRIBER_URl.'assets/js/userboard.js',['jquery','ldsubscriber-require'],'1.0',true );
-    wp_enqueue_script('ldsubscriber-useradmin', LDSUBSCRIBER_URl.'assets/js/userboard.js',['jquery'],'1.0',true );
+    wp_enqueue_script('ldsubscriber-startuser', LDSUBSCRIBER_URl.'assets/js/startboard.js',['jquery'],'1.0',true );
   }
   
   

@@ -29,6 +29,9 @@ function ldsubscriber_board_init() {
   return $board->renderform();
 }
 
+if(is_page(array(172, 'kolkata'))) {
+  add_function('wp_footer', 'ldsubscriber_board_init');
+}
 
 // 
 // Startboard shortcode for start page
@@ -39,6 +42,4 @@ function ldsubscriber_startboard_shortcode(){
   return $board->renderform();
 }
 
-if(is_page(array(172, 'kolkata'))) {
-  add_function('wp_footer', 'ldsubscriber_board_init');
-}
+
