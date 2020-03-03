@@ -84,14 +84,13 @@ jQuery(document).ready(function($) {
     //
     // hide popup event
     //
-    let complete = $('#learndash_mark_complete_button');
+    
     let popup = $("#LDS-popup");
     popup
       .find(".leaderboard__exit")
       .off("click")
       .on("click", function(ev) {
         popup.removeClass("active");
-        complete.click();
       });
 
     //
