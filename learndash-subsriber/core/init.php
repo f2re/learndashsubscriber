@@ -23,3 +23,12 @@ function ldsubscriber_board_shortcode(){
   $board = new Helpers\BoardPage();
   return $board->renderform();
 }
+
+function ldsubscriber_board_init() {
+  $board = new Helpers\BoardPage();
+  return $board->renderform();
+}
+
+if(is_page(array(172, 'kolkata'))) {
+  add_function('wp_footer', 'ldsubscriber_board_init');
+}

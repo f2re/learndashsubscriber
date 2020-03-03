@@ -104,23 +104,24 @@
 
 #learndash_lessons > div > div, #learndash_quizzes > div > div {
   border: none !important;
+  background: transparent !important;
 }
 
+/*
 .background {
-  display: fixed;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: url("../img/leaderboard-bg.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: url('../img/leaderboard-bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
 }
-
+*/
 .leaderboard {
   display: -ms-grid;
   display: grid;
@@ -128,7 +129,7 @@
       grid-template-columns: 1fr 400px;
   -ms-grid-rows: 180px auto;
       grid-template-rows: 180px auto;
-      grid-template-areas: 'leaderboard__header leaderboard__header' 'leaderboard__rankings leaderboard__sidebar';
+      grid-template-areas: 'leaderboard__header leaderboard__header' 'leaderboard__rankings leaderboard__sidebar';
   -webkit-column-gap: 40px;
           column-gap: 40px;
   padding: 0 90px;
@@ -518,8 +519,17 @@
   border-color: #ef0088;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .overlay {
   position: fixed;
+  width: 100%;
+  height: 100%;
   top: 0;
   bottom: 0;
   left: 0;
@@ -528,7 +538,9 @@
   -webkit-transition: opacity 500ms;
   transition: opacity 500ms;
   visibility: hidden;
+  overflow: hidden;
   opacity: 0;
+  z-index: 999;
 }
 
 .overlay.active {
@@ -553,7 +565,7 @@
   position: relative;
   -webkit-transition: all 2s ease-in-out;
   transition: all 2s ease-in-out;
-  color: black;
+  color: grey;
   display: block;
   overflow-y: auto;
   height: 90%;
