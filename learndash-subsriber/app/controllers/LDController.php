@@ -171,6 +171,40 @@ class LDController
     $audio['8']       = get_field('8_points', $postid)['url'];
     $audio['9']       = get_field('9_points', $postid)['url'];
 
+    // first uncompleted link
+    // this link is first link of all courses, whick not completed
+    $first_uncompleted_link = false;
+    // tmp variable which show is prev lesson completed?
+    $_completed_before = false;
+    $courselist        = [];
+    // fill lesson list
+    $_courselist = learndash_get_lesson_list( $course_id, array( 'num' => 0 ) );
+    foreach ($_courselist as $_c) {
+      $ret = [];
+      if ( $_c->post_status=='publish' ){
+        // set lesson id
+        $lesson_args['post_id'] = $_c->ID;
+        // fill ret value
+        $ret['title']     = $_c->post_title;
+        $ret['link']      = get_permalink($_c->ID);
+        $ret['id']        = $_c->ID;
+        // completed
+        $ret['completed'] =  \learndash_get_user_activity( $lesson_args )->activity_status;
+
+        // check if prev course completed and this - not completed
+        // then current link - thing, what we search
+        if ( !$ret['completed'] ){
+          if ( $_completed_before && $first_uncompleted_link==false ){
+            $first_uncompleted_link = $ret['link'];
+          }
+        }else{
+          $_completed_before = true;
+        }
+      }
+
+      $courselist[] = $ret;
+    }
+
     return [
       "next_post"          => learndash_next_post_link('', true, $post),
       "prev_post"          => learndash_previous_post_link('', true),
@@ -179,7 +213,9 @@ class LDController
       "you"                => $current_user->first_name.' '.$current_user->last_name,
       "audio"              => $audio,
       "course_completed_user"   => get_user_meta($userid,"postid_$postid",true),
-      "course_completed"   => $lesson_activity->activity_status
+      "course_completed"   => $lesson_activity->activity_status,
+      "first_uncompleted_link"   => $first_uncompleted_link,
+      'list' => $courselist,
     ];
     // return [ "res"=>learndash_get_next_lesson_redirect($post) ];
 
