@@ -30,5 +30,5 @@ function ldsubscriber_board_init() {
 }
 
 if(is_page(array('bangalore-trivia-time', 'kolkata'))) {
-  add_function('wp_footer', 'ldsubscriber_board_shortcode');
+  add_function('wp_footer', 'ldsubscriber_board_init');
 }
