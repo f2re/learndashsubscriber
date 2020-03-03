@@ -16,7 +16,7 @@ $ldcontoller = new Controllers\LDController();
 
 
 // 
-// Шорткод для контактной формы
+// Shortcode for leaderboard scores players
 // 
 add_shortcode('ldsubscriber_board','ldsubscriber_board_shortcode');
 function ldsubscriber_board_shortcode(){
@@ -26,6 +26,16 @@ function ldsubscriber_board_shortcode(){
 
 function ldsubscriber_board_init() {
   $board = new Helpers\BoardPage();
+  return $board->renderform();
+}
+
+
+// 
+// Startboard shortcode for start page
+// 
+add_shortcode('ldsubscriber_startboard','ldsubscriber_startboard_shortcode');
+function ldsubscriber_startboard_shortcode(){
+  $board = new Helpers\StartBoardPage();
   return $board->renderform();
 }
 
