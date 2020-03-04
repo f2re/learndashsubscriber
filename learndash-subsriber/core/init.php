@@ -15,6 +15,22 @@ $ldcontoller = new Controllers\LDController();
 // add_action('wp_ajax_delete_client',[$actions,'delete']);
 
 
+//
+// Initiate leaderboard
+//
+add_action( 'elementor/frontend/the_content', function( $content ) {
+	
+	// $modules = array(172, 174, 411, 617);
+
+	if('sfwd-lessons' == get_post_type() && !is_single(176)) { // if our post is a learndash lesson that is not post 176 (intro post)
+		$board = new Helpers\BoardPage();
+		return $board->renderform();
+	}
+	
+	return $content;
+});
+
+
 // 
 // Shortcode for leaderboard scores players
 // 
@@ -24,26 +40,6 @@ function ldsubscriber_board_shortcode(){
   return $board->renderform();
 }
 
-//
-// Initiate leaderboard for specific array of post IDs
-//
-
-$modules = array(172);
-
-
-  $board = new Helpers\BoardPage();
-  return $board->renderform();
-  echo 'testing testing testing';
-
-
-
-function init_leaderboard() {
-  if( is_singular('sfwd-lessons') ) {
-    $board = new Helpers\BoardPage();
-    return $board->renderform();
-  }
-}
-add_action('wp', 'init_leaderboard');
 
 // 
 // Startboard shortcode for start page
@@ -53,5 +49,3 @@ function ldsubscriber_startboard_shortcode(){
   $board = new Helpers\StartBoardPage();
   return $board->renderform();
 }
-
-
