@@ -28,11 +28,27 @@ function ldsubscriber_board_shortcode(){
 // Initiate leaderboard for lesson custom post type (sfwd-lessons)
 //
 
-if( is_singular('sfwd-lessons') ) {
-  echo do_shortcode('[ldsubscriber_startboard]');
-  do_shortcode('[ldsubscriber_startboard]');
-  echo 'test';
+global $post;
+$current_post_id = $post->ID;
+echo $current_post_id;
+
+$modules = array(172);
+
+if (in_array($modules, $current_post_id)) {
+  $board = new Helpers\BoardPage();
+  return $board->renderform();
+
+  echo 'we\'re looking at a module';
 }
+
+
+function init_leaderboard() {
+  if( is_singular('sfwd-lessons') ) {
+    $board = new Helpers\BoardPage();
+    return $board->renderform();
+  }
+}
+add_action('wp', 'init_leaderboard');
 
 // 
 // Startboard shortcode for start page
