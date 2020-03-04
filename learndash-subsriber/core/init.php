@@ -30,7 +30,7 @@ function ldsubscriber_board_shortcode(){
 
 $modules = array(172);
 
-if (is_single($modules)) {
+if (is_single(172)) {
   $board = new Helpers\BoardPage();
   return $board->renderform();
 }
