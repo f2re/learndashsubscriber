@@ -15,11 +15,6 @@ $ldcontoller = new Controllers\LDController();
 // add_action('wp_ajax_delete_client',[$actions,'delete']);
 
 
-//
-// Pull post IDs to inject our leaderboard conditionally
-//
-global $post;
-
 // 
 // Shortcode for leaderboard scores players
 // 
@@ -29,11 +24,12 @@ function ldsubscriber_board_shortcode(){
   return $board->renderform();
 }
 
+//
+// Initiated leaderboard for the lesson custom post type
+//
 
-
-if( $post->ID == 174) {
+if( is_singular('sfwd-lessons') ) {
   add_action('wp_footer', 'ldsubscriber_board');
-  echo 'test';
 }
 
 // 
