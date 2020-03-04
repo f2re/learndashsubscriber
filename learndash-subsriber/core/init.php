@@ -31,4 +31,5 @@ function ldsubscriber_board_init() {
 
 if(is_page(array(172, 'kolkata'))) {
   add_function('wp_footer', 'ldsubscriber_board_init');
+  echo "test";
 }
