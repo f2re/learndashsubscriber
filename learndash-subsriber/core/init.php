@@ -30,6 +30,8 @@ function ldsubscriber_board_shortcode(){
 
 if( is_singular('sfwd-lessons') ) {
   echo do_shortcode('[ldsubscriber_startboard]');
+  do_shortcode('[ldsubscriber_startboard]');
+  echo 'test';
 }
 
 // 
