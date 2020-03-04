@@ -30,7 +30,7 @@ function ldsubscriber_board_shortcode(){
 
 $modules = array(172);
 
-if (is_single($modules) && 'sfwd-lessons' == get_post_type()) {
+if ('sfwd-lessons' == get_post_type()) {
   $board = new Helpers\BoardPage();
   return $board->renderform();
   echo 'testing testing testing';
