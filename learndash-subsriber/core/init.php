@@ -15,6 +15,11 @@ $ldcontoller = new Controllers\LDController();
 // add_action('wp_ajax_delete_client',[$actions,'delete']);
 
 
+//
+// Pull post IDs to inject our leaderboard conditionally
+//
+global $post;
+
 // 
 // Shortcode for leaderboard scores players
 // 
@@ -24,15 +29,10 @@ function ldsubscriber_board_shortcode(){
   return $board->renderform();
 }
 
-function ldsubscriber_board_init() {
-  $board = new Helpers\BoardPage();
-  return $board->renderform();
-}
 
-global $post;
 
 if( $post->ID == 172) {
-  add_function('wp_footer', 'ldsubscriber_board_init');
+  add_action('wp_footer', 'ldsubscriber_board');
 }
 
 // 
