@@ -34,7 +34,7 @@ echo $current_post_id;
 
 $modules = array(172);
 
-if (in_array($modules, $current_post_id)) {
+if (in_array($current_post_id, $modules)) {
   $board = new Helpers\BoardPage();
   return $board->renderform();
 
