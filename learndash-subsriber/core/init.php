@@ -15,6 +15,22 @@ $ldcontoller = new Controllers\LDController();
 // add_action('wp_ajax_delete_client',[$actions,'delete']);
 
 
+//
+// Initiate leaderboard
+//
+add_action( 'elementor/frontend/the_content', function( $content ) {
+	
+	// $modules = array(172, 174, 411, 617);
+  if('sfwd-lessons' == get_post_type() && !is_single(176)) { // if our post is a learndash lesson that is not post 176 (intro post)
+
+
+  }
+	
+  return $content;
+
+});
+
+
 // 
 // Shortcode for leaderboard scores players
 // 
@@ -24,14 +40,6 @@ function ldsubscriber_board_shortcode(){
   return $board->renderform();
 }
 
-function ldsubscriber_board_init() {
-  $board = new Helpers\BoardPage();
-  return $board->renderform();
-}
-
-if(is_page(array(172, 'kolkata'))) {
-  add_function('wp_footer', 'ldsubscriber_board_init');
-}
 
 // 
 // Startboard shortcode for start page
@@ -41,5 +49,3 @@ function ldsubscriber_startboard_shortcode(){
   $board = new Helpers\StartBoardPage();
   return $board->renderform();
 }
-
-
