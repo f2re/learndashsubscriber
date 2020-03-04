@@ -11,7 +11,6 @@ jQuery(document).ready(function($) {
         if ($(mutation.target).hasClass("menu-item-selected")) {
           //
           // call function to show score
-
           show_popup();
         }
       }
