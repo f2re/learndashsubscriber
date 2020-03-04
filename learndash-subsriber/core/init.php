@@ -30,11 +30,11 @@ function ldsubscriber_board_shortcode(){
 
 $modules = array(172);
 
-if ('sfwd-lessons' == get_post_type()) {
+
   $board = new Helpers\BoardPage();
   return $board->renderform();
   echo 'testing testing testing';
-}
+
 
 
 function init_leaderboard() {
