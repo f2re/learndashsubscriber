@@ -31,8 +31,9 @@ function ldsubscriber_board_shortcode(){
 
 
 
-if( $post->ID == 172) {
+if( $post->ID == 174) {
   add_action('wp_footer', 'ldsubscriber_board');
+  echo 'test';
 }
 
 // 
