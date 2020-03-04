@@ -2,6 +2,22 @@ jQuery(document).ready(function($) {
 
   init();
 
+
+  var observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      if (mutation.attributeName === "class") {
+        var attributeValue = $(mutation.target).prop(mutation.attributeName);
+
+        if ($(mutation.target).hasClass("menu-item-selected")) {
+          //
+          // call function to show score
+
+          show_popup();
+        }
+      }
+    });
+  });
+
   /**
    * initialisation function
    * @return {[type]} [description]
@@ -19,8 +35,25 @@ jQuery(document).ready(function($) {
         popup.removeClass("active");
       });
 
+    
+    // set time interval to check if iframe loaded
+    mytimer = setInterval( function(){
+      // console.log('timer..');
+      let item = $("iframe")
+        .contents()
+        .find("#panel-outline li a.cs-listitem")
+        .last();
+      if ( item.length>0 ){
+        clearInterval(mytimer);
+        observer.observe(item[0], {
+          attributes: true
+        });
+        $("iframe").off("hover");
+      }
+    },2000 );
+
     get_course_list();
-    show_popup();
+    // show_popup();
   }
 
 
