@@ -25,20 +25,14 @@ function ldsubscriber_board_shortcode(){
 }
 
 //
-// Initiate leaderboard for lesson custom post type (sfwd-lessons)
+// Initiate leaderboard for specific array of post IDs
 //
-
-global $post;
-$current_post_id = $post->ID;
-echo $current_post_id;
 
 $modules = array(172);
 
-if (in_array($current_post_id, $modules)) {
+if (is_single($modules)) {
   $board = new Helpers\BoardPage();
   return $board->renderform();
-
-  echo 'we\'re looking at a module';
 }
 
 
