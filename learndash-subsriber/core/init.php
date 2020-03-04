@@ -22,10 +22,12 @@ add_action( 'elementor/frontend/the_content', function( $content ) {
 	
 	// $modules = array(172, 174, 411, 617);
   if('sfwd-lessons' == get_post_type() && !is_single(176)) { // if our post is a learndash lesson that is not post 176 (intro post)
-    echo do_shortcode('[ldsubscriber_board_shortcode]');
+
+    $content = $content . '<?php echo do_shortcode('[ldsubscriber_board_shortcode]') ?>'; 
+
   }
 	
-  return $content;
+  return $content + ;
 
 });
 
