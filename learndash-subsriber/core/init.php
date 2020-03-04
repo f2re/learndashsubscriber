@@ -29,9 +29,10 @@ function ldsubscriber_board_init() {
   return $board->renderform();
 }
 
-if(is_page(array(172, 'kolkata'))) {
+global $post;
+
+if( $post->ID == 172) {
   add_function('wp_footer', 'ldsubscriber_board_init');
-  echo "test";
 }
 
 // 
