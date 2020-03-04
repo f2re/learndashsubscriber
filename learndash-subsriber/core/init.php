@@ -25,11 +25,11 @@ function ldsubscriber_board_shortcode(){
 }
 
 //
-// Initiated leaderboard for the lesson custom post type
+// Initiate leaderboard for lesson custom post type (sfwd-lessons)
 //
 
 if( is_singular('sfwd-lessons') ) {
-  add_action('wp_footer', 'ldsubscriber_board');
+  echo do_shortcode('[ldsubscriber_startboard]');
 }
 
 // 
