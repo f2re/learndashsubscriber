@@ -16,7 +16,7 @@ $ldcontoller = new Controllers\LDController();
 
 
 // 
-// Шорткод для контактной формы
+// Shortcode for leaderboard scores players
 // 
 add_shortcode('ldsubscriber_board','ldsubscriber_board_shortcode');
 function ldsubscriber_board_shortcode(){
@@ -33,3 +33,14 @@ if(is_page(array(172, 'kolkata'))) {
   add_function('wp_footer', 'ldsubscriber_board_init');
   echo "test";
 }
+
+// 
+// Startboard shortcode for start page
+// 
+add_shortcode('ldsubscriber_startboard','ldsubscriber_startboard_shortcode');
+function ldsubscriber_startboard_shortcode(){
+  $board = new Helpers\StartBoardPage();
+  return $board->renderform();
+}
+
+
