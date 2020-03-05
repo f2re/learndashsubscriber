@@ -21,16 +21,19 @@ $ldcontoller = new Controllers\LDController();
 add_action( 'elementor/frontend/the_content', function( $content ) {
 	
   // $modules = array(172, 174, 411, 617);
-  if('sfwd-lessons' == get_post_type() && get_the_ID()==176 ) { // if our post is a learndash lesson that is not post 176 (intro post)
+  if('sfwd-lessons' == get_post_type() && get_the_ID()==176 ) { // if our post is a learndash lesson that is post 176 (intro post)
+  
     $board = new Helpers\StartBoardPage();
     $content= $content.$board->renderform();
-    
-  } else if('sfwd-lessons' == get_post_type() && !get_the_ID() == 176) {
+  
+  } elseif('sfwd-lessons' == get_post_type() && is_singular($modules)) {
+  
     $board = new Helpers\BoardPage();
-    $content=  $content . $board->renderform();   
+    $content=  $content . $board->renderform();
+    
   }
-return $content;
-
+  return $content;
+  
 });
 
 // 
