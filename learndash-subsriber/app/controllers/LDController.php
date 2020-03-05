@@ -250,8 +250,8 @@ class LDController
       "audio"              => $audio,
       "course_completed"   => get_user_meta($userid,"lessonid_$postid",true),
       "course_completed_user"   => $current_status_course,
-      "first_uncompleted_link"   => $first_uncompleted_link,
-      // 'list' => $courselist,
+      "first_uncompleted_link"  => $first_uncompleted_link,
+      'list'               => $courselist,
     ];
     // return [ "res"=>learndash_get_next_lesson_redirect($post) ];
 
