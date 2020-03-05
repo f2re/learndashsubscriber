@@ -49,7 +49,31 @@ class LDController
       'callback' => array($this, 'reset_course'),
     ));
 
+    register_rest_route('ldsubscriber/v1', '/complete_lesson/', array(
+      'methods'  => 'POST',
+      'callback' => array($this, 'complete_lesson'),
+    ));
 
+
+  }
+
+  /**
+   * Complete lesson
+   *
+   * @return void
+   */
+  public function complete_lesson()
+  {
+    $postid = $_POST['postid']; 
+    $userid = $_POST['userid'];
+    global $post;
+    $post      =  get_post($postid);
+    $course_id = learndash_get_course_id($postid);
+
+    // reset usermeta lesson
+    update_user_meta($userid,"lessonid_".$postid,true);
+
+    return;
   }
 
   /**
@@ -65,6 +89,10 @@ class LDController
     global $post;
     $post      =  get_post($postid);
     $course_id = learndash_get_course_id($postid);
+
+
+    // reset usermeta lesson
+    update_user_meta($userid,"lessonid_".$postid,false);
 
     // reset lesson activity
     $args     = array(
@@ -156,7 +184,7 @@ class LDController
     // 
     // get users score from post_meta 
     // 
-           $users                = [];
+    $users                       = [];
     $users['marta']['point']     = get_field('player_marta', $postid);
     $users['marta']['name']      = get_field('group_names_4', $postid);
     $users['dominique']['point'] = get_field('player_dominique', $postid);
@@ -194,7 +222,10 @@ class LDController
         $ret['link']      = get_permalink($_c->ID);
         $ret['id']        = $_c->ID;
         // completed
-        $ret['completed'] =  \learndash_get_user_activity( $lesson_args )->activity_status;
+        // $ret['largs']     = \learndash_get_user_activity( $lesson_args );
+        // $ret['completed'] =  $ret['largs']->activity_status;
+        $ret['completed'] =  get_user_meta($userid,"lessonid_".$_c->ID,true);
+        // $ret['args']      = $lesson_args;
 
         // check if prev course completed and this - not completed
         // then current link - thing, what we search
@@ -217,10 +248,10 @@ class LDController
       "users"              => $users,
       "you"                => $current_user->first_name.' '.$current_user->last_name,
       "audio"              => $audio,
-      "course_completed_user"   => get_user_meta($userid,"postid_$postid",true),
-      "course_completed"   => $current_status_course,
+      "course_completed"   => get_user_meta($userid,"lessonid_$postid",true),
+      "course_completed_user"   => $current_status_course,
       "first_uncompleted_link"   => $first_uncompleted_link,
-      'list' => $courselist,
+      // 'list' => $courselist,
     ];
     // return [ "res"=>learndash_get_next_lesson_redirect($post) ];
 

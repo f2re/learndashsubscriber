@@ -328,9 +328,17 @@ jQuery(document).ready(function($) {
           popup.find('.leaderboard__next')
               .off('click')
               .on('click',function(ev){
-                complete.click();
+                // complete.click();
+                $.ajax({
+                  url: "/wp-json/ldsubscriber/v1/complete_lesson",
+                  method: "POST",
+                  data: { postid: $("#leadersection-subscriber").attr("postid"),
+                          userid: $("#leadersection-subscriber").attr("userid"),
+                        }
+                }).done(function(_resp) {
+                  window.location.href = resp.next_post;                 
+                });
                 // console.log(resp.next_post);
-                window.location.href = resp.next_post;
                 return;
               });
         }
@@ -345,50 +353,6 @@ jQuery(document).ready(function($) {
     });
   }
 
-  /**
-   * request table data from API
-   * @return {[type]} [description]
-   */
-  function get_table_data() {
-    // require._defined.
-    // window._gsDefine
-    // require( ["models/presentation/interactions/Interaction"], function(p){
-    //   console.log(p);
-    // });
 
-    $.ajax({
-      url: "/wp-json/ldsubscriber/v1/get_course_data",
-      method: "POST",
-      data: {}
-    }).done(function(resp) {
-      // console.log(resp);
-      //
-      // calc percentage of user summary course
-      //
-      let percentage = 0,
-        courses = 0;
-
-      //
-      // iterate over courses
-      //
-      $.each(resp.data.data, function(i, ind) {
-        // console.log(i,ind);
-
-        percentage += ind.progress;
-        courses += 1;
-      });
-
-      $("#leadersection-subscriber form").text(
-        percentage / courses + " percentage courses complete "
-      );
-      
-
-    });
-  }
-
-  function play_audio() {
-
-  }
-  
 });
 
