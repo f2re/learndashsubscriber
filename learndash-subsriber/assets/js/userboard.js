@@ -1,9 +1,11 @@
 jQuery(document).ready(function($) {
   // save users points in global variable
   let users_points = [];
+  let post_points  = [];
   let user_name    = 'Anonim';
   let audio_files  = [];
   let mytimer      = false;
+  let all_scores   = 0;
   init();
 
   var observer = new MutationObserver(function(mutations) {
@@ -20,10 +22,11 @@ jQuery(document).ready(function($) {
           //
           // get data from body attr
           //
-          let _body = $(mutation.target).parents("body");
-          let correct = 0,
-            incorrect = 0,
-            points = 0;
+          let _body        = $(mutation.target).parents("body");
+          let correct      = 0,
+              incorrect    = 0,
+              points       = 0,
+              right_points = 0;
 
           if (_body.attr("correct") !== undefined) {
             correct = parseInt(_body.attr("correct"));
@@ -34,10 +37,24 @@ jQuery(document).ready(function($) {
           if (_body.attr("points") !== undefined) {
             points = parseInt(_body.attr("points"));
           }
-
+          // now we must to calculate all points 
+          post_points;
+          allanswers = _body.attr("allanswers").split(',');
+          console.log(allanswers);
+          for (let k = 0; k < allanswers.length; k++) {
+            if ( allanswers[k]==1 && typeof(post_points[k+1])!='undefined' ){
+              console.log(post_points[k+1]);
+              right_points += parseInt(post_points[k+1]);
+            }
+          }
+          // save scores to global var
+          // console.log("all_scores ",all_scores);
+          // console.log("right_points ",right_points);
+          all_scores += parseInt(right_points);
           // dirty_data(correct, incorrect, points);
           // console.log("Class attribute changed to:", attributeValue);
-          show_leaders_points(points,correct, incorrect);
+          // show_leaders_points(points,correct, incorrect);
+          show_leaders_points(all_scores,correct, incorrect);
           // clear all points 
           clear_points();
         }
@@ -54,6 +71,7 @@ jQuery(document).ready(function($) {
         .find('body');
     _body.attr("correct",0);
     _body.attr("incorrect",0);
+    _body.attr("allanswers",'');
     _body.attr("points",0);
   }
 
@@ -237,6 +255,10 @@ jQuery(document).ready(function($) {
       user_name = resp.you;
       // get audio
       audio_files = resp.audio;
+      // save post scores
+      post_points = resp.scores;
+      // get all scores
+      all_scores = parseInt(resp.course_score);
       
       // let url = _div.find('a').attr('href');
       // console.log(url);
@@ -334,6 +356,7 @@ jQuery(document).ready(function($) {
                   method: "POST",
                   data: { postid: $("#leadersection-subscriber").attr("postid"),
                           userid: $("#leadersection-subscriber").attr("userid"),
+                          scores: all_scores,
                         }
                 }).done(function(_resp) {
                   window.location.href = resp.next_post;                 
@@ -348,7 +371,7 @@ jQuery(document).ready(function($) {
 
       // check if lesson completed, then popup window!
       if ( resp.course_completed ){
-        show_leaders_points(0,0,0);
+        show_leaders_points(all_scores,0,0);
       }
     });
   }

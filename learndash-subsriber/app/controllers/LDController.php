@@ -22,7 +22,7 @@ class LDController
    * mark users meta that lesson is completed
    */
   public function mark_as_completed( $user,    $course=0,    $post=0,    $progress=0  ){
-    print_r($user);
+    // print_r($user);
     $meta_key = "postid_$post->ID";
     update_user_meta( $user->ID, $meta_key, 1 );
   }
@@ -66,9 +66,13 @@ class LDController
   {
     $postid = $_POST['postid']; 
     $userid = $_POST['userid'];
+    $scores = $_POST['scores'];
     global $post;
     $post      =  get_post($postid);
     $course_id = learndash_get_course_id($postid);
+
+    // $scores = (int)$scores +  (int)get_user_meta($userid,"course_scores_".$course_id,true);
+    update_user_meta($userid,"course_scores_".$course_id,$scores);
 
     // reset usermeta lesson
     update_user_meta($userid,"lessonid_".$postid,true);
@@ -92,7 +96,11 @@ class LDController
 
 
     // reset usermeta lesson
-    update_user_meta($userid,"lessonid_".$postid,false);
+    update_user_meta($userid,"lessonid_".$postid,0);
+    // reset usermeta course points $course_score
+    update_user_meta($userid,"course_scores_".$course_id,0);
+    
+
 
     // reset lesson activity
     $args     = array(
@@ -204,6 +212,12 @@ class LDController
     $audio['8']       = get_field('8_points', $postid)['url'];
     $audio['9']       = get_field('9_points', $postid)['url'];
 
+    // questions scores
+    $scores = [];
+    for ($k=1; $k < 10; $k++) { 
+      $scores["$k"] = get_field( "question_$k",$postid );
+    }
+
     // first uncompleted link
     // this link is first link of all courses, whick not completed
     $first_uncompleted_link = false;
@@ -241,13 +255,18 @@ class LDController
       $courselist[] = $ret;
     }
 
+    // course score
+    $course_score = get_user_meta($userid,"course_scores_".$course_id,true);
+
     return [
       "next_post"          => learndash_next_post_link('', true, $post),
       "prev_post"          => learndash_previous_post_link('', true),
       "all_course_content" => do_shortcode('[course_content course_id="' . $course_id . '"]'),
       "users"              => $users,
+      "course_score"       => (int)$course_score,
       "you"                => $current_user->first_name.' '.$current_user->last_name,
       "audio"              => $audio,
+      "scores"             => $scores,
       "course_completed"   => get_user_meta($userid,"lessonid_$postid",true),
       "course_completed_user"   => $current_status_course,
       "first_uncompleted_link"  => $first_uncompleted_link,
