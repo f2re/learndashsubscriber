@@ -13,7 +13,7 @@ jQuery(document).ready(function($) {
       if (mutation.attributeName === "class") {
         var attributeValue = $(mutation.target).prop(mutation.attributeName);
 
-        if ($(mutation.target).hasClass("menu-item-selected")) {
+        if ($(mutation.target).hasClass("menu-item-selected") || $(mutation.target).hasClass("cs-selected")) {
           //
           // call function to show score
           //
@@ -88,7 +88,7 @@ jQuery(document).ready(function($) {
       // console.log('timer..');
       let item = $("iframe")
         .contents()
-        .find("#panel-outline li a.cs-listitem")
+        .find("#panel-outline li .cs-listitem, #outline-panel li .cs-listitem")
         .last();
       if ( item.length>0 ){
         clearInterval(mytimer);

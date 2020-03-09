@@ -96,7 +96,15 @@ class LDController
 
 
     // reset usermeta lesson
-    update_user_meta($userid,"lessonid_".$postid,0);
+    $_courselist = learndash_get_lesson_list( $course_id, array( 'num' => 0 ) );
+    foreach ($_courselist as $_c) {
+      $ret = [];
+      if ( $_c->post_status=='publish' ){
+        // set lesson id
+        delete_user_meta($userid, "lessonid_". $_c->ID);
+      }
+    }
+    
     // reset usermeta course points $course_score
     update_user_meta($userid,"course_scores_".$course_id,0);
     
