@@ -6,6 +6,7 @@ jQuery(document).ready(function($) {
   let audio_files  = [];
   let mytimer      = false;
   let all_scores   = 0;
+  let audio        = false;
   init();
 
   var observer = new MutationObserver(function(mutations) {
@@ -222,8 +223,15 @@ jQuery(document).ready(function($) {
 
     // play sound if exist file
     if ( typeof audio_files[audio_ind]!==undefined ){
-      var audio = new Audio(audio_files[audio_ind]);
-      audio.play();
+      if ( audio===false ){
+        audio = new Audio(audio_files[audio_ind]);
+        // console.log( audio );
+        if (audio.duration > 0 && !audio.paused) {
+          console.log('already playing!');
+        }else{
+          audio.play();
+        }
+      }
     }
 
     // popup.find(".content").after(_div);
