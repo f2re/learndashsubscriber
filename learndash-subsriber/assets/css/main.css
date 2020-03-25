@@ -134,7 +134,7 @@
   -webkit-column-gap: 40px;
           column-gap: 40px;
   padding: 0 90px;
-  font-family: "Permanent Marker";
+  font-family: "Permanent Marker" !important;
   background: url("/wp-content/plugins/learndash-subsriber/assets/img/leaderboard-bg.jpg") no-repeat;
   background-size: cover;
 }
@@ -219,6 +219,14 @@
       grid-template-rows: repeat(5, 60px);
   grid-row-gap: 30px;
   margin-top: 64px !important;
+}
+
+.leaderboard__cities #lessons_list h4 {
+  font-family: "Permanent Marker" !important;
+}
+
+.leaderboard__cities #lessons_list a {
+  font-family: "Permanent Marker" !important;
 }
 
 .leaderboard__city, .leaderboard__city--blue, .leaderboard__city--green, .leaderboard__city--yellow, .leaderboard__city--pink {

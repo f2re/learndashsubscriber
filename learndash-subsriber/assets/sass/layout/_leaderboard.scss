@@ -22,7 +22,7 @@
                            'leaderboard__rankings leaderboard__sidebar';
     column-gap: 40px;
     padding: 0 90px;
-    font-family: $primary-font;
+    font-family: $primary-font !important;
     background: url('/wp-content/plugins/learndash-subsriber/assets/img/leaderboard-bg.jpg') no-repeat;
     background-size: cover;
 
@@ -83,6 +83,14 @@
         grid-template-rows: repeat(5, 60px);
         grid-row-gap: 30px;
         margin-top: 64px !important;
+
+        h4 {
+            font-family: $primary-font !important;
+        }
+
+        a {
+            font-family: $primary-font !important;
+        }
     }
 
     &__city {
