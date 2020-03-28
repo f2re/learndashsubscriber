@@ -7,6 +7,7 @@ jQuery(document).ready(function($) {
   let mytimer      = false;
   let all_scores   = 0;
   let audio        = false;
+  let max_points   = 1;
   init();
 
   var observer = new MutationObserver(function(mutations) {
@@ -41,7 +42,7 @@ jQuery(document).ready(function($) {
           // now we must to calculate all points 
           post_points;
           allanswers = _body.attr("allanswers").split(',');
-          console.log(allanswers);
+          // console.log(allanswers);
           for (let k = 0; k < allanswers.length; k++) {
             if ( allanswers[k]==1 && typeof(post_points[k+1])!='undefined' ){
               console.log(post_points[k+1]);
@@ -172,13 +173,14 @@ jQuery(document).ready(function($) {
       _v[item] = users_points[item];
       sortable.push( _v );
     }
+    // console.log(users_points);
     // define sort function
     sortable.sort(function(a, b) {
       let _a = Object.keys(a)[0];
       let _b = Object.keys(b)[0];
       return a[_a].point - b[_b].point;
     });
-    console.log(sortable);
+    // console.log(sortable);
     
     // fill div with order
     // let _div = $('<div class="leaderboard"></div>');   
@@ -207,25 +209,43 @@ jQuery(document).ready(function($) {
 
     // calculate percentage 
     let audio_ind = 0;
-    if ((correct+incorrect)!=0){
-      audio_ind = parseInt(correct*10/(correct+incorrect));
-      // console.log("points:",audio_ind);
-    }
-
-    let keys = Object.keys(audio_files);
     
-    if ( audio_ind<keys[0] ){
-      audio_ind=keys[0];
+    let keys = Object.keys(audio_files);
+    // calculate percentage of current stage
+    let percentage = (points/max_points)*100;
+    // console.log("percentage: "+percentage);
+    // get intervals
+    let intervals  = keys.length;
+    // console.log("intervals: "+intervals);
+    // step of intervals
+    let step = 100/intervals;
+    // console.log("step: "+step);
+    // prev value
+    let prev = 0;
+
+    for (let _i = 0; _i < intervals; _i++) {
+      if ( percentage>prev && percentage<= (prev+step) ) {
+        audio_ind = _i;
+      } 
+      prev = prev+step;
     }
-    if ( audio_ind>keys[keys.length-1] ){
-      audio_ind=keys[keys.length-1];
-    }
+    // audio_ind = parseInt(correct*10/(correct+incorrect));
+    // console.log("audio index:",audio_ind);
+  
+    audio_ind = keys[audio_ind];
+    // console.log("audio index 2:",audio_ind);
+    // if ( audio_ind>keys.length-1 ){
+    //   audio_ind=keys[0];
+    // }
+    // if ( audio_ind>keys[keys.length-1] ){
+    //   audio_ind=keys[keys.length-1];
+    // }
 
     // play sound if exist file
     if ( typeof audio_files[audio_ind]!==undefined ){
       if ( audio===false ){
         audio = new Audio(audio_files[audio_ind]);
-        // console.log( audio );
+        console.log( audio );
         if (audio.duration > 0 && !audio.paused) {
           console.log('already playing!');
         }else{
@@ -267,6 +287,8 @@ jQuery(document).ready(function($) {
       post_points = resp.scores;
       // get all scores
       all_scores = parseInt(resp.course_score);
+      // get max points of course
+      max_points = parseInt(resp.max_points);
       
       // let url = _div.find('a').attr('href');
       // console.log(url);

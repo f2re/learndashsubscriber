@@ -200,15 +200,6 @@ class LDController
     // 
     // get users score from post_meta 
     // 
-    //$users                       = [];
-    //$users['marta']['point']     = get_field('player_marta', $postid);
-    //$users['marta']['name']      = get_field('group_names_4', $postid);
-    //$users['dominique']['point'] = get_field('player_dominique', $postid);
-    //$users['dominique']['name']  = get_field('group_names_3', $postid);
-    //$users['kaleb']['point']     = get_field('player_kaleb', $postid);
-    //$users['kaleb']['name']      = get_field('group_names_2', $postid);
-    //$users['luke']['point']      = get_field('player_luke', $postid);
-    //$users['luke']['name']       = get_field('group_names_1', $postid);
 
     $users                       = [];
     $users['marta']['point']     = get_field('player_marta', $postid);
@@ -219,6 +210,11 @@ class LDController
     $users['kaleb']['name']      = get_field('group_names_3', $postid);
     $users['luke']['point']      = get_field('player_luke', $postid);
     $users['luke']['name']       = get_field('group_names_4', $postid);
+
+    // 
+    // get max points from course
+    // 
+    $max_points = get_field('maximum_point_value', $postid);
 
     //
     // audio data; since this is get_course_list() do we want to extend this function and rename it?
@@ -289,10 +285,8 @@ class LDController
       "course_completed_user"   => $current_status_course,
       "first_uncompleted_link"  => $first_uncompleted_link,
       'list'               => $courselist,
+      'max_points'         => $max_points,
     ];
-    // return [ "res"=>learndash_get_next_lesson_redirect($post) ];
-
-    
   }
 
   /**
