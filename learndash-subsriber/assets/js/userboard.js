@@ -257,6 +257,139 @@ jQuery(document).ready(function($) {
     // popup.find(".content").after(_div);
   }
 
+
+
+  // module IDs
+  $modules = [
+    'module_1'    => 172,
+    'module_2'    => 174,
+    'module_3'    => 411,
+    'module_4'    => 617
+  ];
+
+  for($modules) {
+     
+    // Bangalore
+  
+    if($post_id == $module['module_1']) {
+  
+      switch($total_player_score) {
+        case ($total_player_score <= 5):
+          $leaderboard_audio = $audio['1'];
+          break;
+        case ($total_player_score == 6):
+          $leaderboard_audio = $audio['2'];
+          break;
+        case ($total_player_score == 7):
+          $leaderboard_audio = $audio['3'];
+          break;
+        case ($total_player_score == 8):
+          $leaderboard_audio = $audio['4'];
+          break;
+        case ($total_player_score == 9 || $total_player_score == 10):
+          $leaderboard_audio = $audio['5'];
+          break;
+        default:
+      }
+    }
+  
+    // Kolkata
+  
+    if($post_id == $module['module_2']) {
+  
+      switch($total_player_score) {
+        case ($total_player_score <= 5):
+          $leaderboard_audio = $audio['1'];
+          break;
+        case ($total_player_score == 6):
+          $leaderboard_audio = $audio['2'];
+          break;
+        case ($total_player_score == 7 || $total_player_score <= 13):
+          $leaderboard_audio = $audio['3'];
+          break;
+        case ($total_player_score == 14):
+          $leaderboard_audio = $audio['4'];
+          break;
+        case ($total_player_score == 15 || $total_player_score <= 16):
+          $leaderboard_audio = $audio['5'];
+          break;
+        case ($total_player_score == 17):
+          $leaderboard_audio = $audio['6'];
+          break;
+        case ($total_player_score >= 18):
+          $leaderboard_audio = $audio['7'];
+          break;
+        default:
+      }
+    }
+  
+  
+    // New Dehli
+  
+    if($post_id == $module['module_3']) {
+  
+      switch($total_player_score) {
+        case ($total_player_score <= 7):
+          $leaderboard_audio = $audio['1'];
+          break;
+        case ($total_player_score == 8):
+          $leaderboard_audio = $audio['2'];
+          break;
+        case ($total_player_score == 9 || $total_player_score <= 17):
+          $leaderboard_audio = $audio['3'];
+          break;
+        case ($total_player_score == 18):
+          $leaderboard_audio = $audio['4'];
+          break;
+        case ($total_player_score == 19):
+          $leaderboard_audio = $audio['5'];
+          break;
+        case ($total_player_score == 20):
+          $leaderboard_audio = $audio['6'];
+          break;
+        case ($total_player_score >= 21):
+          $leaderboard_audio = $audio['7'];
+          break;
+        default:
+      }
+    }
+  
+  
+    // Mumbai
+  
+    if($post_id == $module['module_4']) {
+  
+      switch($total_player_score) {
+        case ($total_player_score <= 17):
+          $leaderboard_audio = $audio['1'];
+          break;
+        case ($total_player_score == 18):
+          $leaderboard_audio = $audio['2'];
+          break;
+        case ($total_player_score == 19 || $total_player_score <= 21):
+          $leaderboard_audio = $audio['3'];
+          break;
+        case ($total_player_score == 22):
+          $leaderboard_audio = $audio['4'];
+          break;
+        case ($total_player_score == 23):
+          $leaderboard_audio = $audio['5'];
+          break;
+        case ($total_player_score == 24):
+          $leaderboard_audio = $audio['6'];
+          break;
+        case ($total_player_score == 25):
+          $leaderboard_audio = $audio['7'];
+          break;
+        case ($total_player_score >= 26):
+          $leaderboard_audio = $audio['8'];
+          break;
+        default:
+      }
+    }
+  }
+
+
   /**
    * request table data from API
    * @return {[type]} [description]
