@@ -363,6 +363,7 @@ jQuery(document).ready(function($) {
 
           // iterate over course list and mark finished courses
           $.each(course_list, function(ind, obj){
+            console.log('object.id:' + obj.id);
             if ( obj.id == post_id ){
               if ( obj.completed=="1" || i==0 || i==(_count-1) ){
                 a.removeClass('notcompleted');
