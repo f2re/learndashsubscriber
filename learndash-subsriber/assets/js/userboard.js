@@ -352,7 +352,7 @@ jQuery(document).ready(function($) {
         // add classes to links
         let _count = _div.find('#lessons_list > div').length;
         _div.find('#lessons_list > div').each(function(i,obj){
-          let a = $(obj).find('h4');
+          let a = $(obj).find('a');
           let j = i % classes.length ;
           let post_id = parseInt($(this).attr('id').replace('post-',''));
 
@@ -363,11 +363,10 @@ jQuery(document).ready(function($) {
 
           // iterate over course list and mark finished courses
           $.each(course_list, function(ind, obj){
-            console.log('object.id:' + obj.id);
             if ( obj.id == post_id ){
               if ( obj.completed=="1" || i==0 || i==(_count-1) ){
                 a.removeClass('notcompleted');
-                a.addClass('checkmark');
+                a.addClass('completed');
               }
             }
           });
@@ -377,6 +376,46 @@ jQuery(document).ready(function($) {
           }
           a.addClass(classes[j]);
         });
+
+
+
+
+        popup.find(".leaderboard__cities").html(_div);
+      // if next-link empty - show all courses
+      if (resp.next_post == "") {
+        popup.find('.leaderboard__next').addClass('d-none');
+        popup.find('.leaderboard__replay').removeClass('d-none');
+
+        let first_course = '';
+        // add classes to links
+        let _count = _div.find('#lessons_list > div').length;
+        _div.find('#lessons_list > div').each(function(i,obj){
+          let a = $(obj).find('a');
+          let j = i % classes.length ;
+          let post_id = parseInt($(this).attr('id').replace('post-',''));
+
+          // grab first ourse url to redirect
+          if ( first_course=='' ){
+            first_course=a.attr('href');
+          }
+
+          // iterate over course list and mark finished courses
+          $.each(course_list, function(ind, obj){
+            if ( obj.id == post_id ){
+              if ( obj.completed=="1" || i==0 || i==(_count-1) ){
+                a.removeClass('notcompleted');
+                a.addClass('completed');
+              }
+            }
+          });
+
+          if ( !a.hasClass('notcompleted') ) {
+            a.addClass('checkmark');
+          }
+          a.addClass(classes[j]);
+        });
+
+        
 
         // assign click event to reset course button
         popup.find('.leaderboard__replay')
