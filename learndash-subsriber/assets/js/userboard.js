@@ -352,7 +352,7 @@ jQuery(document).ready(function($) {
         // add classes to links
         let _count = _div.find('#lessons_list > div').length;
         _div.find('#lessons_list > div').each(function(i,obj){
-          let a = $(obj).find('a');
+          let a = $(obj).find('h4');
           let j = i % classes.length ;
           let post_id = parseInt($(this).attr('id').replace('post-',''));
 
