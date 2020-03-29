@@ -366,7 +366,7 @@ jQuery(document).ready(function($) {
             if ( obj.id == post_id ){
               if ( obj.completed=="1" || i==0 || i==(_count-1) ){
                 a.removeClass('notcompleted');
-                a.addClass('completed');
+                a.addClass('checkmark');
               }
             }
           });
