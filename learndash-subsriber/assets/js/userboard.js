@@ -220,20 +220,20 @@ jQuery(document).ready(function($) {
     // prev value
     let prev = 0;
 
-    // console.log(audio_files);
+    console.log(audio_files);
 
     // set audio file path
     let audio_file_path = '';
 
     let last_file = '';
 
-    // console.log('points: '+points);
-
+    console.log('points: '+points); 
+    
     $.each( audio_files , function(key, obj){
-      // console.log(key);
-      // console.log(obj);
+      console.log(key);
+      console.log(obj);
       // check if fields not empty
-      if ( obj.file!='' && obj.scores!='' ){
+      if ( obj.file!='' && obj.file!=null && obj.scores!='' ){
         // check if scrores is not array
         if ( obj.scores.length>1 ){
           if ( points>=parseInt(obj.scores[0])&&points<=parseInt(obj.scores[1]) ){
@@ -246,13 +246,13 @@ jQuery(document).ready(function($) {
         }
       }
       // save last file
-      if ( obj.file!='' ){
+      if ( obj.file!='' && obj.file!=null ){
         last_file = obj.file;
       }
     } );
 
-    // console.log( "audio "+ audio_file_path);
-    // console.log( "last "+ last_file);
+    console.log( "audio "+ audio_file_path);
+    console.log( "last "+ last_file);
 
     // if dont see out scores - then it is last file
     if ( audio_file_path==''  ){
@@ -266,11 +266,11 @@ jQuery(document).ready(function($) {
     //   prev = prev+step;
     // }
     
-    // audio_ind = keys[audio_ind];
+    // audio_ind = keys[audio_ind]; 
     
     // play sound if exist file
     // if ( typeof audio_files[audio_ind]!==undefined ){
-    if ( audio_file_path!='' ){
+    if ( audio_file_path!='' && ( correct>0 || incorrect>0 ) ){ 
       if ( audio===false ){
         // audio = new Audio(audio_files[audio_ind]);
         audio = new Audio(audio_file_path);
@@ -278,6 +278,7 @@ jQuery(document).ready(function($) {
         if (audio.duration > 0 && !audio.paused) {
           console.log('already playing!');
         }else{
+          console.log('playyyyyyyy'); 
           audio.play();
         }
       }
@@ -319,6 +320,9 @@ jQuery(document).ready(function($) {
       all_scores = parseInt(resp.course_score);
       // get max points of course
       max_points = parseInt(resp.max_points);
+
+      // grab all course list with completed mark
+      let course_list = resp.list;
       
       // let url = _div.find('a').attr('href');
       // console.log(url);
@@ -346,14 +350,26 @@ jQuery(document).ready(function($) {
 
         let first_course = '';
         // add classes to links
+        let _count = _div.find('#lessons_list > div').length;
         _div.find('#lessons_list > div').each(function(i,obj){
           let a = $(obj).find('a');
           let j = i % classes.length ;
+          let post_id = parseInt($(this).attr('id').replace('post-',''));
 
           // grab first ourse url to redirect
           if ( first_course=='' ){
             first_course=a.attr('href');
           }
+
+          // iterate over course list and mark finished courses
+          $.each(course_list, function(ind, obj){
+            if ( obj.id == post_id ){
+              if ( obj.completed=="1" || i==0 || i==(_count-1) ){
+                a.removeClass('notcompleted');
+                a.addClass('completed');
+              }
+            }
+          });
 
           if ( !a.hasClass('notcompleted') ) {
             a.addClass('checkmark');
