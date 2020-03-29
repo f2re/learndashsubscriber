@@ -274,19 +274,25 @@ jQuery(document).ready(function($) {
     if($post_id == $module['module_1']) {
   
       switch($total_player_score) {
-        case ($total_player_score <= 5):
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
           $leaderboard_audio = $audio['1'];
           break;
-        case ($total_player_score == 6):
+        case 6:
           $leaderboard_audio = $audio['2'];
           break;
-        case ($total_player_score == 7):
+        case 7:
           $leaderboard_audio = $audio['3'];
           break;
-        case ($total_player_score == 8):
+        case 8:
           $leaderboard_audio = $audio['4'];
           break;
-        case ($total_player_score == 9 || $total_player_score == 10):
+        case 9:
+        case 10:
           $leaderboard_audio = $audio['5'];
           break;
         default:
