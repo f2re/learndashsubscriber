@@ -143,9 +143,29 @@
   .leaderboard {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: 1fr 1fr;
-        grid-template-columns: 1fr 1fr;
+    -ms-grid-columns: 50% 50%;
+        grid-template-columns: 50% 50%;
     padding: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .leaderboard {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 50% 50%;
+        grid-template-columns: 50% 50%;
+    padding: 0;
+  }
+}
+
+@media (min-width: 992px) {
+  .leaderboard {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 50% 50%;
+        grid-template-columns: 50% 50%;
+    padding: 0 30px;
   }
 }
 
@@ -584,11 +604,23 @@ html, body {
   position: relative;
   -webkit-transition: all 2s ease-in-out;
   transition: all 2s ease-in-out;
-  color: grey;
+  color: #fff;
   display: block;
   overflow-y: auto;
   height: 90%;
   border-radius: 25px;
+}
+
+@media (max-width: 767px) {
+  .popup {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .popup {
+    width: 100%;
+  }
 }
 
 .popup .close {

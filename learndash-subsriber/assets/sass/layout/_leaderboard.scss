@@ -28,8 +28,20 @@
 
     @include breakpoint(xs) {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 50% 50%;
         padding: 0;
+    }
+
+    @include breakpoint(sm) {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        padding: 0;
+    }
+
+    @include breakpoint(md) {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        padding: 0 30px;
     }
 
     &__header {

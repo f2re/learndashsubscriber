@@ -43,11 +43,19 @@ html, body {
     width: 90%;
     position: relative;
     transition: all 2s ease-in-out;
-    color: grey;
+    color: #fff;
     display: block;
     overflow-y: auto;
     height: 90%;
     border-radius: 25px;
+
+    @include breakpoint(xs) {
+      width: 100%;
+    }
+
+    @include breakpoint(sm) {
+      width: 100%
+    }
     
     .close {
         position: absolute;
