@@ -262,10 +262,10 @@ jQuery(document).ready(function($) {
   // module IDs
 
   $modules = [];
-  $modules['module_1'] = 172,
-  $modules['module_2'] = 174,
-  $modules['module_3'] = 411,
-  $modules['module_4'] = 617
+  $modules['module_1'] = 172;
+  $modules['module_2'] = 174;
+  $modules['module_3'] = 411;
+  $modules['module_4'] = 617;
 
   for($modules) {
      
