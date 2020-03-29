@@ -28,19 +28,19 @@
 
     @include breakpoint(xs) {
         display: grid;
-        grid-template-columns: 50% 50%;
+        grid-template-columns: 100%;
         padding: 0;
     }
 
     @include breakpoint(sm) {
         display: grid;
-        grid-template-columns: 50% 50%;
+        grid-template-columns: 100%;
         padding: 0;
     }
 
     @include breakpoint(md) {
         display: grid;
-        grid-template-columns: 50% 50%;
+        grid-template-columns: 80% 20%;
         padding: 0 30px;
     }
 
@@ -228,6 +228,18 @@
         background-color: $cerulean;
         margin-left: 10px;
         z-index: 1;
+
+        @include breakpoint(xs) {
+
+        }
+    
+        @include breakpoint(sm) {
+
+        }
+    
+        @include breakpoint(md) {
+
+        }
     }
 
     &__rank {

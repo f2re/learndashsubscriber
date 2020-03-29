@@ -143,8 +143,8 @@
   .leaderboard {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: 50% 50%;
-        grid-template-columns: 50% 50%;
+    -ms-grid-columns: 100%;
+        grid-template-columns: 100%;
     padding: 0;
   }
 }
@@ -153,8 +153,8 @@
   .leaderboard {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: 50% 50%;
-        grid-template-columns: 50% 50%;
+    -ms-grid-columns: 100%;
+        grid-template-columns: 100%;
     padding: 0;
   }
 }
@@ -163,8 +163,8 @@
   .leaderboard {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: 50% 50%;
-        grid-template-columns: 50% 50%;
+    -ms-grid-columns: 80% 20%;
+        grid-template-columns: 80% 20%;
     padding: 0 30px;
   }
 }
