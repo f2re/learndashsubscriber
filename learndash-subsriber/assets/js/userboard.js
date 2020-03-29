@@ -45,7 +45,7 @@ jQuery(document).ready(function($) {
           // console.log(allanswers);
           for (let k = 0; k < allanswers.length; k++) {
             if ( allanswers[k]==1 && typeof(post_points[k+1])!='undefined' ){
-              console.log(post_points[k+1]);
+              // console.log(post_points[k+1]);
               right_points += parseInt(post_points[k+1]);
             }
           }
@@ -213,38 +213,67 @@ jQuery(document).ready(function($) {
     let keys = Object.keys(audio_files);
     // calculate percentage of current stage
     let percentage = (points/max_points)*100;
-    // console.log("percentage: "+percentage);
     // get intervals
     let intervals  = keys.length;
-    // console.log("intervals: "+intervals);
     // step of intervals
     let step = 100/intervals;
-    // console.log("step: "+step);
     // prev value
     let prev = 0;
 
-    for (let _i = 0; _i < intervals; _i++) {
-      if ( percentage>prev && percentage<= (prev+step) ) {
-        audio_ind = _i;
-      } 
-      prev = prev+step;
-    }
-    // audio_ind = parseInt(correct*10/(correct+incorrect));
-    // console.log("audio index:",audio_ind);
-  
-    audio_ind = keys[audio_ind];
-    // console.log("audio index 2:",audio_ind);
-    // if ( audio_ind>keys.length-1 ){
-    //   audio_ind=keys[0];
-    // }
-    // if ( audio_ind>keys[keys.length-1] ){
-    //   audio_ind=keys[keys.length-1];
-    // }
+    // console.log(audio_files);
 
+    // set audio file path
+    let audio_file_path = '';
+
+    let last_file = '';
+
+    // console.log('points: '+points);
+
+    $.each( audio_files , function(key, obj){
+      // console.log(key);
+      // console.log(obj);
+      // check if fields not empty
+      if ( obj.file!='' && obj.scores!='' ){
+        // check if scrores is not array
+        if ( obj.scores.length>1 ){
+          if ( points>=parseInt(obj.scores[0])&&points<=parseInt(obj.scores[1]) ){
+            audio_file_path = obj.file;
+          }
+        }else{
+          if ( points==parseInt(obj.scores[0]) ){
+            audio_file_path = obj.file;
+          }
+        }
+      }
+      // save last file
+      if ( obj.file!='' ){
+        last_file = obj.file;
+      }
+    } );
+
+    // console.log( "audio "+ audio_file_path);
+    // console.log( "last "+ last_file);
+
+    // if dont see out scores - then it is last file
+    if ( audio_file_path==''  ){
+      audio_file_path=last_file;
+    }
+
+    // for (let _i = 0; _i < intervals; _i++) {
+    //   if ( percentage>prev && percentage<= (prev+step) ) {
+    //     audio_ind = _i;
+    //   } 
+    //   prev = prev+step;
+    // }
+    
+    // audio_ind = keys[audio_ind];
+    
     // play sound if exist file
-    if ( typeof audio_files[audio_ind]!==undefined ){
+    // if ( typeof audio_files[audio_ind]!==undefined ){
+    if ( audio_file_path!='' ){
       if ( audio===false ){
-        audio = new Audio(audio_files[audio_ind]);
+        // audio = new Audio(audio_files[audio_ind]);
+        audio = new Audio(audio_file_path);
         console.log( audio );
         if (audio.duration > 0 && !audio.paused) {
           console.log('already playing!');

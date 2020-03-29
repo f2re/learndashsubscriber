@@ -230,7 +230,9 @@ class LDController
 
     $audio = [];
     for ($k=1; $k < 10; $k++) { 
-      $audio["$k"] = get_field( "score_level_$k",$postid )['url'];
+      $audio["$k"]['file']   = get_field( "score_level_$k",$postid )['url'];
+      $_sc = get_field( "score_level_$k",$postid )['caption'];
+      $audio["$k"]['scores'] = ($_sc=='' ? '' : explode( '-', $_sc ));
     }
 
     // questions scores
@@ -255,9 +257,22 @@ class LDController
     $courselist        = [];
     // fill lesson list
     $_courselist = learndash_get_lesson_list( $course_id, array( 'num' => 0 ) );
+    // variable, while it false - we must summarize max_points_of course
+    $stop_calc_max_points = false;
     foreach ($_courselist as $_c) {
       $ret = [];
       if ( $_c->post_status=='publish' ){
+        
+        $_max_points = get_field('maximum_point_value', $_c->ID);
+
+        if ( !$stop_calc_max_points && $postid!=$_c->ID ){
+          $max_points += $_max_points;
+        }
+        // if we achive to current ID - then stop it
+        if ( $postid==$_c->ID ){
+          $stop_calc_max_points = true;
+        }
+
         // set lesson id
         $lesson_args['post_id'] = $_c->ID;
         // fill ret value
