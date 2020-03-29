@@ -49,6 +49,7 @@ html, body {
     height: 90%;
     border-radius: 25px;
 
+    /*
     @include breakpoint(xs) {
       width: 100%;
     }
@@ -56,6 +57,7 @@ html, body {
     @include breakpoint(sm) {
       width: 100%
     }
+    */
     
     .close {
         position: absolute;

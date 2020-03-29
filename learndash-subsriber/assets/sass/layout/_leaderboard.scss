@@ -26,6 +26,7 @@
     background: url('/wp-content/plugins/learndash-subsriber/assets/img/leaderboard-bg.jpg') no-repeat;
     background-size: cover;
 
+    /*
     @include breakpoint(xs) {
         display: grid;
         grid-template-columns: 100%;
@@ -43,6 +44,7 @@
         grid-template-columns: 80% 20%;
         padding: 0 30px;
     }
+    */
 
     &__header {
         grid-area: leaderboard__header;
