@@ -239,6 +239,14 @@ class LDController
       $scores["$k"] = get_field( "question_$k",$postid );
     }
 
+    // module IDs
+    $modules = [
+      'module_1'    => 172,
+      'module_2'    => 174,
+      'module_3'    => 411,
+      'module_4'    => 617
+    ];
+
     // first uncompleted link
     // this link is first link of all courses, whick not completed
     $first_uncompleted_link = false;
