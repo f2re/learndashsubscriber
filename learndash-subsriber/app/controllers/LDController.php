@@ -219,12 +219,19 @@ class LDController
     //
     // audio data; since this is get_course_list() do we want to extend this function and rename it?
     //
-    $audio            = [];
-    $audio['5']       = get_field('5_points', $postid)['url'];
-    $audio['6']       = get_field('6_points', $postid)['url'];
-    $audio['7']       = get_field('7_points', $postid)['url'];
-    $audio['8']       = get_field('8_points', $postid)['url'];
-    $audio['9']       = get_field('9_points', $postid)['url'];
+    // $audio            = [];
+    // $audio['5']       = get_field('5_points', $postid)['url'];
+    // $audio['6']       = get_field('6_points', $postid)['url'];
+    // $audio['7']       = get_field('7_points', $postid)['url'];
+    // $audio['8']       = get_field('8_points', $postid)['url'];
+    // $audio['9']       = get_field('9_points', $postid)['url'];
+    // $audio['9']       = get_field('9_points', $postid)['url'];
+    // $audio['9']       = get_field('9_points', $postid)['url'];
+
+    $audio = [];
+    for ($k=1; $k < 10; $k++) { 
+      $audio["$k"] = get_field( "score_level_$k",$postid )['url'];
+    }
 
     // questions scores
     $scores = [];
