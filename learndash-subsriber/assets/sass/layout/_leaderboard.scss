@@ -26,6 +26,12 @@
     background: url('/wp-content/plugins/learndash-subsriber/assets/img/leaderboard-bg.jpg') no-repeat;
     background-size: cover;
 
+    @include breakpoint(xs) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 0;
+    }
+
     &__header {
         grid-area: leaderboard__header;
         display: flex;
