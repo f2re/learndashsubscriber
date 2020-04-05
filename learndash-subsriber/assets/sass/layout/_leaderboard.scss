@@ -39,8 +39,6 @@
                              'leaderboard__rankings .'
                              'leaderboard__sidebar .';
         display: flex;
-        flex-direction: column;
-        align-items: center;
         padding: 0 60px;
         column-gap: 0;
     }
@@ -89,7 +87,6 @@
 
     &__exit {
         display: flex;
-        justify-content: center;
         font-size: 40px;
         color: $grey;
         cursor: pointer;
