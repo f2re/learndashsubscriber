@@ -199,7 +199,6 @@
 
 .leaderboard__header {
   grid-area: leaderboard__header;
-      grid-template-areas: 'leaderboard__title leaderboard__exit';
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -212,19 +211,12 @@
 }
 
 .leaderboard__title {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  grid-area: leaderboard__title;
   font-family: "Ocean Six Condensed";
   font-size: 95px;
   color: #4C4C4C;
 }
 
 .leaderboard__exit {
-  grid-area: leaderbord__exit;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   font-size: 40px;
   color: #4C4C4C;
   cursor: pointer;
