@@ -136,6 +136,8 @@
     
         @include breakpoint(md) {
             grid-template-columns: 1fr 1fr;
+            grid-template-rows: repeat(3, 60px);
+            justify-content: center;
         }
 
         h4 {
@@ -219,6 +221,7 @@
     }
 
     &__next, &__replay, &__continue {
+        grid-area: leaderboard__action;
         display: flex;
         justify-content: center;
         align-items: flex-end;

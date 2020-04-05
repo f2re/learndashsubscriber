@@ -297,6 +297,11 @@
   .leaderboard__cities #lessons_list {
     -ms-grid-columns: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
+    -ms-grid-rows: (60px)[3];
+        grid-template-rows: repeat(3, 60px);
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 }
 
@@ -382,6 +387,7 @@
 }
 
 .leaderboard__next, .leaderboard__replay, .leaderboard__continue {
+  grid-area: leaderboard__action;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
