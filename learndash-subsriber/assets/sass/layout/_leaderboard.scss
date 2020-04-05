@@ -26,6 +26,24 @@
     background: url('/wp-content/plugins/learndash-subsriber/assets/img/leaderboard-bg.jpg') no-repeat;
     background-size: cover;
 
+    @include breakpoint(xs) {
+        grid-template-columns: 1fr;
+        grid-template-areas: 'leaderboard__header leaderboard__header'
+                             'leaderboard__rankings .'
+                             'leaderboard__sidebar .';
+    }
+
+    @include breakpoint(sm) {
+
+    }
+
+    @include breakpoint(md) {
+        grid-template-columns: 1fr;
+        grid-template-areas: 'leaderboard__header leaderboard__header'
+                             'leaderboard__rankings .'
+                             'leaderboard__sidebar .';
+    }
+
     /*
     @include breakpoint(xs) {
         display: grid;
@@ -225,23 +243,11 @@
     &:before {
         content: '';
         position: absolute;
-        width: 940px;
+        width: calc(100% - 85px);
         height: 50px;
         background-color: $cerulean;
         margin-left: 10px;
         z-index: 1;
-
-        @include breakpoint(xs) {
-
-        }
-    
-        @include breakpoint(sm) {
-
-        }
-    
-        @include breakpoint(md) {
-
-        }
     }
 
     &__rank {
