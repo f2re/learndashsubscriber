@@ -51,40 +51,23 @@
         padding: 0 90px;
     }
 
-    /*
-    @include breakpoint(xs) {
-        display: grid;
-        grid-template-columns: 100%;
-        padding: 0;
-    }
-
-    @include breakpoint(sm) {
-        display: grid;
-        grid-template-columns: 100%;
-        padding: 0;
-    }
-
-    @include breakpoint(md) {
-        display: grid;
-        grid-template-columns: 80% 20%;
-        padding: 0 30px;
-    }
-    */
-
     &__header {
         grid-area: leaderboard__header;
+        grid-template-columns: 'leaderboard__title leaderboard__exit';
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
     &__title {
+        grid-area: leaderboard__title;
         font-family: $heading-font;
         font-size: 95px;
         color: $grey;
     }
 
     &__exit {
+        grid-area: leaderbord__exit;
         display: flex;        
         font-size: 40px;
         color: $grey;

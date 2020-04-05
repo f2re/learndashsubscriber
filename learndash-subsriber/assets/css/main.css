@@ -160,25 +160,6 @@
   font-family: "Permanent Marker" !important;
   background: url("/wp-content/plugins/learndash-subsriber/assets/img/leaderboard-bg.jpg") no-repeat;
   background-size: cover;
-  /*
-    @include breakpoint(xs) {
-        display: grid;
-        grid-template-columns: 100%;
-        padding: 0;
-    }
-
-    @include breakpoint(sm) {
-        display: grid;
-        grid-template-columns: 100%;
-        padding: 0;
-    }
-
-    @include breakpoint(md) {
-        display: grid;
-        grid-template-columns: 80% 20%;
-        padding: 0 30px;
-    }
-    */
 }
 
 @media (max-width: 767px) {
@@ -218,6 +199,8 @@
 
 .leaderboard__header {
   grid-area: leaderboard__header;
+  -ms-grid-columns: 'leaderboard__title leaderboard__exit';
+      grid-template-columns: 'leaderboard__title leaderboard__exit';
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -230,12 +213,14 @@
 }
 
 .leaderboard__title {
+  grid-area: leaderboard__title;
   font-family: "Ocean Six Condensed";
   font-size: 95px;
   color: #4C4C4C;
 }
 
 .leaderboard__exit {
+  grid-area: leaderbord__exit;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
