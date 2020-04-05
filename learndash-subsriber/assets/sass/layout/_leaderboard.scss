@@ -15,13 +15,7 @@
 */
 
 .leaderboard {
-    display: grid;
-    grid-template-columns: 1fr 400px;
-    grid-template-rows: 180px auto;
-    grid-template-areas:   'leaderboard__header leaderboard__header'
-                           'leaderboard__rankings leaderboard__sidebar';
-    column-gap: 40px;
-    padding: 0 90px;
+    display: grid;    
     font-family: $primary-font !important;
     background: url('/wp-content/plugins/learndash-subsriber/assets/img/leaderboard-bg.jpg') no-repeat;
     background-size: cover;
@@ -46,6 +40,15 @@
                              'leaderboard__sidebar .';
         padding: 0 60px;
         column-gap: 0;
+    }
+
+    @include breakpoint(lg) {
+        grid-template-columns: 1fr 400px;
+        grid-template-rows: 180px auto;
+        grid-template-areas:   'leaderboard__header leaderboard__header'
+                            'leaderboard__rankings leaderboard__sidebar';
+        column-gap: 40px;
+        padding: 0 90px;
     }
 
     /*
@@ -86,6 +89,19 @@
         margin-right: 200px;
         color: $grey;
         cursor: pointer;
+
+        @include breakpoint(xs) {
+
+        }
+    
+        @include breakpoint(sm) {
+    
+        }
+    
+        @include breakpoint(md) {
+            justify-content: flex-end;
+
+        }
     }
 
     &__heading {
@@ -127,7 +143,7 @@
         margin-top: 64px !important;
 
         @include breakpoint(xs) {
-
+            margin-top: 40px !important;
         }
     
         @include breakpoint(sm) {
@@ -137,7 +153,7 @@
         @include breakpoint(md) {
             grid-template-columns: 1fr 1fr;
             grid-template-rows: repeat(3, 60px);
-            justify-content: center;
+            margin-top: 40px !important;
         }
 
         h4 {

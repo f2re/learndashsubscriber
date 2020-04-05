@@ -157,14 +157,6 @@
 .leaderboard {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 400px;
-      grid-template-columns: 1fr 400px;
-  -ms-grid-rows: 180px auto;
-      grid-template-rows: 180px auto;
-      grid-template-areas: 'leaderboard__header leaderboard__header' 'leaderboard__rankings leaderboard__sidebar';
-  -webkit-column-gap: 40px;
-          column-gap: 40px;
-  padding: 0 90px;
   font-family: "Permanent Marker" !important;
   background: url("/wp-content/plugins/learndash-subsriber/assets/img/leaderboard-bg.jpg") no-repeat;
   background-size: cover;
@@ -211,10 +203,20 @@
   }
 }
 
+@media (min-width: 1200px) {
+  .leaderboard {
+    -ms-grid-columns: 1fr 400px;
+        grid-template-columns: 1fr 400px;
+    -ms-grid-rows: 180px auto;
+        grid-template-rows: 180px auto;
+        grid-template-areas: 'leaderboard__header leaderboard__header' 'leaderboard__rankings leaderboard__sidebar';
+    -webkit-column-gap: 40px;
+            column-gap: 40px;
+    padding: 0 90px;
+  }
+}
+
 .leaderboard__header {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
   grid-area: leaderboard__header;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -240,6 +242,14 @@
   cursor: pointer;
 }
 
+@media (min-width: 992px) {
+  .leaderboard__exit {
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+}
+
 .leaderboard__heading {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -251,14 +261,10 @@
 }
 
 .leaderboard__rankings {
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
   grid-area: leaderboard__rankings;
 }
 
 .leaderboard__sidebar {
-  -ms-grid-row: 2;
-  -ms-grid-column: 2;
   grid-area: leaderboard__sidebar;
 }
 
@@ -293,15 +299,19 @@
   margin-top: 64px !important;
 }
 
+@media (max-width: 767px) {
+  .leaderboard__cities #lessons_list {
+    margin-top: 40px !important;
+  }
+}
+
 @media (min-width: 992px) {
   .leaderboard__cities #lessons_list {
     -ms-grid-columns: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
     -ms-grid-rows: (60px)[3];
         grid-template-rows: repeat(3, 60px);
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    margin-top: 40px !important;
   }
 }
 
