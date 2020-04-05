@@ -154,6 +154,7 @@
 
         @include breakpoint(lg) {
             justify-content: center !important;
+            grid-template-columns: 1fr;
             grid-template-rows: repeat(5, 60px);
             grid-row-gap: 30px;
             margin-top: 64px !important;

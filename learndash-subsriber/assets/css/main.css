@@ -313,6 +313,8 @@
     -webkit-box-pack: center !important;
         -ms-flex-pack: center !important;
             justify-content: center !important;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
     -ms-grid-rows: (60px)[5];
         grid-template-rows: repeat(5, 60px);
     grid-row-gap: 30px;
