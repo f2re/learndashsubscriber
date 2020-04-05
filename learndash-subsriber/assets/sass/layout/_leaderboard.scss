@@ -136,11 +136,7 @@
 
     &__cities #lessons_list {
         grid-area: leaderboard__cities;
-        display: grid !important;
-        justify-content: center !important;
-        grid-template-rows: repeat(5, 60px);
-        grid-row-gap: 30px;
-        margin-top: 64px !important;
+        display: grid !important;        
 
         @include breakpoint(xs) {
             margin-top: 40px !important;
@@ -154,6 +150,13 @@
             grid-template-columns: 1fr 1fr;
             grid-template-rows: repeat(3, 60px);
             margin-top: 40px !important;
+        }
+
+        @include breakpoint(lg) {
+            justify-content: center !important;
+            grid-template-rows: repeat(5, 60px);
+            grid-row-gap: 30px;
+            margin-top: 64px !important;
         }
 
         h4 {

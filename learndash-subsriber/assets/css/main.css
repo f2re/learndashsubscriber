@@ -290,13 +290,6 @@
   grid-area: leaderboard__cities;
   display: -ms-grid !important;
   display: grid !important;
-  -webkit-box-pack: center !important;
-      -ms-flex-pack: center !important;
-          justify-content: center !important;
-  -ms-grid-rows: (60px)[5];
-      grid-template-rows: repeat(5, 60px);
-  grid-row-gap: 30px;
-  margin-top: 64px !important;
 }
 
 @media (max-width: 767px) {
@@ -312,6 +305,18 @@
     -ms-grid-rows: (60px)[3];
         grid-template-rows: repeat(3, 60px);
     margin-top: 40px !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .leaderboard__cities #lessons_list {
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+    -ms-grid-rows: (60px)[5];
+        grid-template-rows: repeat(5, 60px);
+    grid-row-gap: 30px;
+    margin-top: 64px !important;
   }
 }
 
