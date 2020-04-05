@@ -307,6 +307,23 @@
     max-width: 1000px;
     font-family: $primary-font;
     margin-bottom: 20px;
+
+    @include breakpoint(xs) {
+
+    }
+
+    @include breakpoint(sm) {
+        grid-template-areas: 'player__rank player__thumbnail'
+                             'player__names player__points';
+    }
+
+    @include breakpoint(md) {        
+
+    }
+
+    @include breakpoint(lg) {
+
+    }
     
     &:before {
         content: '';

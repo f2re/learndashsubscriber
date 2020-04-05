@@ -494,6 +494,12 @@
   margin-bottom: 20px;
 }
 
+@media (min-width: 768px) {
+  .player {
+        grid-template-areas: 'player__rank player__thumbnail' 'player__names player__points';
+  }
+}
+
 .player:before {
   content: '';
   position: absolute;
