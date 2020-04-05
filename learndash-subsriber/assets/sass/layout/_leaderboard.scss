@@ -39,7 +39,7 @@
                              'leaderboard__rankings .'
                              'leaderboard__sidebar .';
         padding: 0 60px;
-        column-gap: 20px;
+        column-gap: 0;
     }
 
     @include breakpoint(lg) {
@@ -47,7 +47,7 @@
         grid-template-rows: 180px auto;
         grid-template-areas:   'leaderboard__header leaderboard__exit'
                             'leaderboard__rankings leaderboard__sidebar';
-        column-gap: 40px;
+        column-gap: 0;
         padding: 0 90px;
     }
 
@@ -126,10 +126,12 @@
 
     &__cities #lessons_list {
         grid-area: leaderboard__cities;
-        display: grid !important;        
+        display: grid !important;
+        row-gap: 30px;
 
         @include breakpoint(xs) {
             margin-top: 40px !important;
+            column-gap: 0;
         }
     
         @include breakpoint(sm) {
@@ -139,13 +141,13 @@
         @include breakpoint(md) {
             grid-template-columns: 1fr 1fr;
             grid-template-rows: repeat(3, 60px);
+            column-gap: 20px;
             margin-top: 40px !important;
         }
 
         @include breakpoint(lg) {            
             grid-template-columns: 1fr;
             grid-template-rows: repeat(5, 60px);
-            grid-row-gap: 30px;
             margin-top: 64px !important;
         }
 
