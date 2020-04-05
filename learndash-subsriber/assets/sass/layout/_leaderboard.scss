@@ -22,15 +22,19 @@
 
     @include breakpoint(xs) {
         grid-template-columns: 1fr;
-        grid-template-areas: 'leaderboard__header leaderboard__exit'
-                             'leaderboard__rankings leaderboard__rankings'
-                             'leaderboard__sidebar leaderboard__sidebar';
+        grid-template-areas: 'leaderboard__header'
+                             'leaderboard__rankings'
+                             'leaderboard__sidebar';
         padding: 0 30px;
         column-gap: 20px;
     }
 
     @include breakpoint(sm) {
-
+        grid-template-areas: 'leaderboard__header'
+                             'leaderboard__rankings'
+                             'leaderboard__sidebar';
+        padding: 0 30px;
+        column-gap: 20px;
     }
 
     @include breakpoint(md) {        
@@ -59,9 +63,25 @@
     }
 
     &__title {
-        font-family: $heading-font;
-        font-size: 95px;
+        font-family: $heading-font;        
         color: $grey;
+
+        @include breakpoint(xs) {
+            font-size: 60px;
+        }
+    
+        @include breakpoint(sm) {
+            font-size: 80px;
+        }
+    
+        @include breakpoint(md) {        
+
+        }
+    
+        @include breakpoint(lg) {
+            font-size: 95px;
+        }
+
     }
 
     &__exit {

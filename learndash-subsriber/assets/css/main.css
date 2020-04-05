@@ -166,7 +166,16 @@
   .leaderboard {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
-        grid-template-areas: 'leaderboard__header leaderboard__exit' 'leaderboard__rankings leaderboard__rankings' 'leaderboard__sidebar leaderboard__sidebar';
+        grid-template-areas: 'leaderboard__header' 'leaderboard__rankings' 'leaderboard__sidebar';
+    padding: 0 30px;
+    -webkit-column-gap: 20px;
+            column-gap: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .leaderboard {
+        grid-template-areas: 'leaderboard__header' 'leaderboard__rankings' 'leaderboard__sidebar';
     padding: 0 30px;
     -webkit-column-gap: 20px;
             column-gap: 20px;
@@ -212,8 +221,25 @@
 
 .leaderboard__title {
   font-family: "Ocean Six Condensed";
-  font-size: 95px;
   color: #4C4C4C;
+}
+
+@media (max-width: 767px) {
+  .leaderboard__title {
+    font-size: 60px;
+  }
+}
+
+@media (min-width: 768px) {
+  .leaderboard__title {
+    font-size: 80px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .leaderboard__title {
+    font-size: 95px;
+  }
 }
 
 .leaderboard__exit {
