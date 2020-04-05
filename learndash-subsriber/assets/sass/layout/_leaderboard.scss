@@ -298,7 +298,7 @@
 .player {
     display: grid;
     position: relative;
-    grid-template-columns: 85px 170px minmax(200px, 600px) 85px;
+    
     grid-auto-rows: 85px;    
     column-gap: 20px;
     row-gap: 20px; // template areas is breaking row gap; will come back to this
@@ -308,6 +308,7 @@
     margin-bottom: 20px;
 
     @include breakpoint(xs) {
+        grid-template-columns: 50% 50%;
         grid-template-areas: 'player__rank player__thumbnail'
                              'player__names player__points';
 
@@ -322,6 +323,7 @@
     }
 
     @include breakpoint(lg) {
+        grid-template-columns: 85px 170px minmax(200px, 600px) 85px;
         grid-template-areas: 'player__rank player__thumbnail player__names player__points';
     }
     
