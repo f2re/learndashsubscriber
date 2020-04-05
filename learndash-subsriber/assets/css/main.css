@@ -166,10 +166,10 @@
   .leaderboard {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
-        grid-template-areas: 'leaderboard__header leaderboard__header' 'leaderboard__rankings .' 'leaderboard__sidebar .';
+        grid-template-areas: 'leaderboard__header leaderboard__exit' 'leaderboard__rankings .' 'leaderboard__sidebar .';
     padding: 0 30px;
-    -webkit-column-gap: 0;
-            column-gap: 0;
+    -webkit-column-gap: 20px;
+            column-gap: 20px;
   }
 }
 
@@ -177,10 +177,10 @@
   .leaderboard {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
-        grid-template-areas: 'leaderboard__header leaderboard__header' 'leaderboard__rankings .' 'leaderboard__sidebar .';
+        grid-template-areas: 'leaderboard__header leaderboard__exit' 'leaderboard__rankings .' 'leaderboard__sidebar .';
     padding: 0 60px;
-    -webkit-column-gap: 0;
-            column-gap: 0;
+    -webkit-column-gap: 20px;
+            column-gap: 20px;
   }
 }
 
