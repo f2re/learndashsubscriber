@@ -53,7 +53,7 @@
 
     &__header {
         grid-area: leaderboard__header;
-        grid-template-columns: 'leaderboard__title leaderboard__exit';
+        grid-template-areas: 'leaderboard__title leaderboard__exit';
         display: flex;
         justify-content: space-between;
         align-items: center;
