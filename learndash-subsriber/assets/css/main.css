@@ -195,6 +195,8 @@
         grid-template-columns: 1fr;
         grid-template-areas: 'leaderboard__header leaderboard__header' 'leaderboard__rankings .' 'leaderboard__sidebar .';
     padding: 0 30px;
+    -webkit-column-gap: 0;
+            column-gap: 0;
   }
 }
 
@@ -204,6 +206,8 @@
         grid-template-columns: 1fr;
         grid-template-areas: 'leaderboard__header leaderboard__header' 'leaderboard__rankings .' 'leaderboard__sidebar .';
     padding: 0 60px;
+    -webkit-column-gap: 0;
+            column-gap: 0;
   }
 }
 
@@ -287,6 +291,13 @@
       grid-template-rows: repeat(5, 60px);
   grid-row-gap: 30px;
   margin-top: 64px !important;
+}
+
+@media (min-width: 992px) {
+  .leaderboard__cities #lessons_list {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
 }
 
 .leaderboard__cities #lessons_list h4 {

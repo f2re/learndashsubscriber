@@ -32,6 +32,7 @@
                              'leaderboard__rankings .'
                              'leaderboard__sidebar .';
         padding: 0 30px;
+        column-gap: 0;
     }
 
     @include breakpoint(sm) {
@@ -44,7 +45,7 @@
                              'leaderboard__rankings .'
                              'leaderboard__sidebar .';
         padding: 0 60px;
-
+        column-gap: 0;
     }
 
     /*
@@ -124,6 +125,18 @@
         grid-template-rows: repeat(5, 60px);
         grid-row-gap: 30px;
         margin-top: 64px !important;
+
+        @include breakpoint(xs) {
+
+        }
+    
+        @include breakpoint(sm) {
+    
+        }
+    
+        @include breakpoint(md) {
+            grid-template-columns: 1fr 1fr;
+        }
 
         h4 {
             font-family: $primary-font !important;
