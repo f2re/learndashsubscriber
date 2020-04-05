@@ -23,7 +23,7 @@
     @include breakpoint(xs) {
         grid-template-columns: 1fr;
         grid-template-areas: 'leaderboard__header leaderboard__exit'
-                             'leaderboard__rankings .'
+                             'leaderboard__rankings leaderboard__rankings'
                              'leaderboard__sidebar .';
         padding: 0 30px;
         column-gap: 20px;
@@ -36,7 +36,7 @@
     @include breakpoint(md) {        
         grid-template-columns: 1fr;
         grid-template-areas: 'leaderboard__header leaderboard__exit'
-                             'leaderboard__rankings .'
+                             'leaderboard__rankings lederboard__rankings'
                              'leaderboard__sidebar .';
         padding: 0 60px;
         column-gap: 0;
