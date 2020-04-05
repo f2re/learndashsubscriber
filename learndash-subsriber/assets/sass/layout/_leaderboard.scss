@@ -85,8 +85,7 @@
     }
 
     &__exit {
-        display: flex;
-        justify-content: center;
+        display: flex;        
         font-size: 40px;
         color: $grey;
         cursor: pointer;
@@ -101,6 +100,10 @@
     
         @include breakpoint(md) {
             justify-content: flex-end;
+        }
+
+        @include breakpoint(lg) {
+            justify-content: center;
         }
     }
 
