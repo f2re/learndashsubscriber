@@ -190,7 +190,7 @@
         grid-template-columns: 1fr 400px;
     -ms-grid-rows: 180px auto;
         grid-template-rows: 180px auto;
-        grid-template-areas: 'leaderboard__header leaderboard__header' 'leaderboard__rankings leaderboard__sidebar';
+        grid-template-areas: 'leaderboard__header leaderboard__exit' 'leaderboard__rankings leaderboard__sidebar';
     -webkit-column-gap: 40px;
             column-gap: 40px;
     padding: 0 90px;
@@ -217,6 +217,16 @@
 }
 
 .leaderboard__exit {
+  grid-area: leaderboard__exit;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-size: 40px;
   color: #4C4C4C;
   cursor: pointer;

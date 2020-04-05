@@ -45,7 +45,7 @@
     @include breakpoint(lg) {
         grid-template-columns: 1fr 400px;
         grid-template-rows: 180px auto;
-        grid-template-areas:   'leaderboard__header leaderboard__header'
+        grid-template-areas:   'leaderboard__header leaderboard__exit'
                             'leaderboard__rankings leaderboard__sidebar';
         column-gap: 40px;
         padding: 0 90px;
@@ -65,6 +65,10 @@
     }
 
     &__exit {
+        grid-area: leaderboard__exit;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         font-size: 40px;
         color: $grey;
         cursor: pointer;
