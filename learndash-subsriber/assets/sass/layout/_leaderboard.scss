@@ -21,29 +21,31 @@
     background-size: cover;
 
     @include breakpoint(xs) {
-        grid-template-columns: 1fr;
+        grid-template-columns: 100%;
         grid-template-areas: 'leaderboard__header'
                              'leaderboard__rankings'
                              'leaderboard__sidebar';
-        padding: 0 30px;
         column-gap: 20px;
+        padding: 0 30px;
     }
 
     @include breakpoint(sm) {
+        grid-template-columns: 100%;
         grid-template-areas: 'leaderboard__header'
                              'leaderboard__rankings'
                              'leaderboard__sidebar';
-        padding: 0 30px;
         column-gap: 20px;
+        padding: 0 30px;
+        
     }
 
     @include breakpoint(md) {        
-        grid-template-columns: 1fr;
+        grid-template-columns: 80% 20%;
         grid-template-areas: 'leaderboard__header leaderboard__exit'
                              'leaderboard__rankings leaderboard__rankings'
                              'leaderboard__sidebar leaderboard__sidebar';
-        padding: 0 60px;
         column-gap: 0;
+        padding: 0 60px;
     }
 
     @include breakpoint(lg) {

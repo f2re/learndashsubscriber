@@ -164,32 +164,34 @@
 
 @media (max-width: 767px) {
   .leaderboard {
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
+    -ms-grid-columns: 100%;
+        grid-template-columns: 100%;
         grid-template-areas: 'leaderboard__header' 'leaderboard__rankings' 'leaderboard__sidebar';
-    padding: 0 30px;
     -webkit-column-gap: 20px;
             column-gap: 20px;
+    padding: 0 30px;
   }
 }
 
 @media (min-width: 768px) {
   .leaderboard {
+    -ms-grid-columns: 100%;
+        grid-template-columns: 100%;
         grid-template-areas: 'leaderboard__header' 'leaderboard__rankings' 'leaderboard__sidebar';
-    padding: 0 30px;
     -webkit-column-gap: 20px;
             column-gap: 20px;
+    padding: 0 30px;
   }
 }
 
 @media (min-width: 992px) {
   .leaderboard {
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
+    -ms-grid-columns: 80% 20%;
+        grid-template-columns: 80% 20%;
         grid-template-areas: 'leaderboard__header leaderboard__exit' 'leaderboard__rankings leaderboard__rankings' 'leaderboard__sidebar leaderboard__sidebar';
-    padding: 0 60px;
     -webkit-column-gap: 0;
             column-gap: 0;
+    padding: 0 60px;
   }
 }
 
