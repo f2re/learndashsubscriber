@@ -36,7 +36,7 @@
     @include breakpoint(md) {        
         grid-template-columns: 1fr;
         grid-template-areas: 'leaderboard__header leaderboard__exit'
-                             'leaderboard__rankings lederboard__rankings'
+                             'leaderboard__rankings leaderboard__rankings'
                              'leaderboard__sidebar .';
         padding: 0 60px;
         column-gap: 0;
@@ -45,8 +45,8 @@
     @include breakpoint(lg) {
         grid-template-columns: 1fr 400px;
         grid-template-rows: 180px auto;
-        grid-template-areas:   'leaderboard__header leaderboard__exit'
-                            'leaderboard__rankings leaderboard__sidebar';
+        grid-template-areas: 'leaderboard__header leaderboard__exit'
+                             'leaderboard__rankings leaderboard__sidebar';
         column-gap: 0;
         padding: 0 90px;
     }
