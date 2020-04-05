@@ -38,7 +38,6 @@
         grid-template-areas: 'leaderboard__header leaderboard__header'
                              'leaderboard__rankings .'
                              'leaderboard__sidebar .';
-        display: flex;
         padding: 0 60px;
         column-gap: 0;
     }
@@ -86,7 +85,6 @@
     }
 
     &__exit {
-        display: flex;
         font-size: 40px;
         color: $grey;
         cursor: pointer;

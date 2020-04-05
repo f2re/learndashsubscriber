@@ -197,9 +197,6 @@
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
         grid-template-areas: 'leaderboard__header leaderboard__header' 'leaderboard__rankings .' 'leaderboard__sidebar .';
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
     padding: 0 60px;
     -webkit-column-gap: 0;
             column-gap: 0;
@@ -239,9 +236,6 @@
 }
 
 .leaderboard__exit {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   font-size: 40px;
   color: #4C4C4C;
   cursor: pointer;
