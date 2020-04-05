@@ -482,7 +482,6 @@
   -ms-grid-columns: 85px 170px minmax(200px, 600px) 85px;
       grid-template-columns: 85px 170px minmax(200px, 600px) 85px;
   grid-auto-rows: 85px;
-      grid-template-areas: 'player__rank player__thumbnail player__names player__points';
   -webkit-column-gap: 20px;
           column-gap: 20px;
   row-gap: 20px;
@@ -494,9 +493,15 @@
   margin-bottom: 20px;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 767px) {
   .player {
         grid-template-areas: 'player__rank player__thumbnail' 'player__names player__points';
+  }
+}
+
+@media (min-width: 1200px) {
+  .player {
+        grid-template-areas: 'player__rank player__thumbnail player__names player__points';
   }
 }
 
@@ -511,8 +516,6 @@
 }
 
 .player__rank {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
   grid-area: player__rank;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -537,8 +540,6 @@
 }
 
 .player__thumbnail {
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
   grid-area: player__thumbnail;
   width: 170px;
   height: 85px;
@@ -580,8 +581,6 @@
 }
 
 .player__names {
-  -ms-grid-row: 1;
-  -ms-grid-column: 3;
   grid-area: player__names;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -601,8 +600,6 @@
 }
 
 .player__points {
-  -ms-grid-row: 1;
-  -ms-grid-column: 4;
   grid-area: player__points;
   display: -webkit-box;
   display: -ms-flexbox;
