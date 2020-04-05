@@ -194,6 +194,7 @@
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
         grid-template-areas: 'leaderboard__header leaderboard__header' 'leaderboard__rankings .' 'leaderboard__sidebar .';
+    padding: 0 30px;
   }
 }
 
@@ -202,6 +203,7 @@
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
         grid-template-areas: 'leaderboard__header leaderboard__header' 'leaderboard__rankings .' 'leaderboard__sidebar .';
+    padding: 0 60px;
   }
 }
 

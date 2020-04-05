@@ -31,6 +31,7 @@
         grid-template-areas: 'leaderboard__header leaderboard__header'
                              'leaderboard__rankings .'
                              'leaderboard__sidebar .';
+        padding: 0 30px;
     }
 
     @include breakpoint(sm) {
@@ -42,6 +43,8 @@
         grid-template-areas: 'leaderboard__header leaderboard__header'
                              'leaderboard__rankings .'
                              'leaderboard__sidebar .';
+        padding: 0 60px;
+
     }
 
     /*
