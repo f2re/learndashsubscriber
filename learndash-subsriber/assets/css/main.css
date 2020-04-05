@@ -197,6 +197,16 @@
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
         grid-template-areas: 'leaderboard__header leaderboard__header' 'leaderboard__rankings .' 'leaderboard__sidebar .';
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     padding: 0 60px;
     -webkit-column-gap: 0;
             column-gap: 0;
@@ -236,8 +246,13 @@
 }
 
 .leaderboard__exit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   font-size: 40px;
-  margin-right: 200px;
   color: #4C4C4C;
   cursor: pointer;
 }
@@ -284,6 +299,9 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center !important;
+      -ms-flex-pack: center !important;
+          justify-content: center !important;
 }
 
 .leaderboard__cities #lessons_list {
@@ -310,9 +328,6 @@
 
 @media (min-width: 1200px) {
   .leaderboard__cities #lessons_list {
-    -webkit-box-pack: center !important;
-        -ms-flex-pack: center !important;
-            justify-content: center !important;
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
     -ms-grid-rows: (60px)[5];
