@@ -308,18 +308,31 @@
     margin-bottom: 20px;
 
     @include breakpoint(xs) {
-        grid-template-columns: 50% 50%;
-        grid-template-areas: 'player__rank player__thumbnail'
-                             'player__names player__points';
+        grid-template-columns: 30% auto 30%;
+        grid-template-areas: 'player__rank player__thumbnail player__points';
+        grid-auto-rows: unset;
+        column-gap: 1%;
+        row-gap: 0;
+        column-gap: 0;
 
     }
 
     @include breakpoint(sm) {
-
+        grid-auto-rows: unset;
+        width:100%;
+        row-gap: 0;
+        column-gap: 1%;
+        grid-template-columns: 85px 170px minmax(200px, 600px) 85px;
+        grid-template-areas: 'player__rank player__thumbnail player__names player__points';
     }
 
     @include breakpoint(md) {        
-
+        grid-auto-rows: unset;
+        width:100%;
+        row-gap: 0;
+        column-gap: 0;
+        grid-template-columns: 85px 170px minmax(200px, 600px) 85px;
+        grid-template-areas: 'player__rank player__thumbnail player__names player__points';
     }
 
     @include breakpoint(lg) {
@@ -330,6 +343,9 @@
     &:before {
         content: '';
         position: absolute;
+        @include breakpoint(xs) {
+            display: none;
+        }
         width: calc(100% - 85px);
         height: 50px;
         background-color: $cerulean;
@@ -356,6 +372,9 @@
 
     &__thumbnail {
         grid-area: player__thumbnail;
+        @include breakpoint(xs) {
+            width: 100px;
+        }
         width: 170px;
         height: 85px;
         border: 3px solid $white;
@@ -396,6 +415,9 @@
 
     &__names {
         grid-area: player__names;
+        @include breakpoint(sm) {
+            display:none;
+        }
         display: flex;
         justify-content: center;
         align-items: center;        
