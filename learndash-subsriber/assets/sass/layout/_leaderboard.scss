@@ -307,7 +307,7 @@
     margin-bottom: 20px;
 
     @include breakpoint(xs) {
-        grid-template-columns: 33.333% 33.333% 33.333%;
+        grid-template-columns: 32.5% 33% 32.5%;
         grid-template-areas: 'player__names player__names player__names'
                              'player__rank player__thumbnail player__points';
         grid-auto-rows: unset;
