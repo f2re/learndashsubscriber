@@ -313,14 +313,14 @@
         column-gap: 0;
         row-gap: 20px;
         width: 100%;
+        margin-bottom: 20px;
     }
 
     @include breakpoint(sm) {
         grid-auto-rows: unset;        
         grid-template-columns: 85px 170px minmax(200px, 600px) 85px;
         grid-template-areas: 'player__rank player__thumbnail player__names player__points';     
-        width: 100%;
-        margin-bottom: 20px;
+        width: 100%;        
     }
 
     @include breakpoint(md) {        
