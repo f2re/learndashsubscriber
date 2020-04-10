@@ -310,7 +310,7 @@
         grid-template-areas: 'player__names player__names player__names'
                              'player__rank player__thumbnail player__points';
         grid-auto-rows: unset;
-        column-gap: 20px;
+        column-gap: 0;
         row-gap: 20px;
         width: 100%;
     }
@@ -327,6 +327,7 @@
         grid-auto-rows: unset;        
         grid-template-columns: 85px 170px minmax(200px, 600px) 85px;
         grid-template-areas: 'player__rank player__thumbnail player__names player__points';
+        column-gap: 20px;
         width: 100%;
     }
 
