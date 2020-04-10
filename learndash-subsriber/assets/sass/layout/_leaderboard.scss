@@ -309,7 +309,8 @@
 
     @include breakpoint(xs) {
         grid-template-columns: 30% auto 30%;
-        grid-template-areas: 'player__rank player__thumbnail player__points';
+        grid-template-areas: 'player__rank player__thumbnail'
+                             'player__name player__points';
         grid-auto-rows: unset;
         column-gap: 1%;
         row-gap: 0;
