@@ -371,11 +371,7 @@
     }
 
     &__thumbnail {
-        grid-area: player__thumbnail;
-        @include breakpoint(xs) {
-            width: 100px;
-        }
-        width: 170px;
+        grid-area: player__thumbnail;        
         height: 85px;
         border: 3px solid $white;
         border-radius: 24px;
@@ -385,6 +381,18 @@
         background-repeat: no-repeat;
         box-shadow : 5.28px 5.28px 3.77px rgba(155, 155, 155, 0.75);
         z-index: 2;
+
+        @include breakpoint(xs) {
+            width: 85px;
+        }
+
+        @include breakpoint(sm) {
+            width: 100px;
+        }
+
+        @include breakpoint(md) {
+            width: 170px;
+        }
 
         &.marta {
             background: #fff url('/wp-content/plugins/learndash-subsriber/assets/img/marta-emma.jpg') no-repeat !important; 
@@ -415,18 +423,22 @@
 
     &__names {
         grid-area: player__names;
-        @include breakpoint(sm) {
-            display:none;
-        }
         display: flex;
         justify-content: center;
         align-items: center;        
         font-size: 37px;
         text-overflow: ellipsis;               
-        color: $white;
         white-space: nowrap;
         overflow: hidden;
         z-index: 2;
+    }
+
+    @include breakpoint(xs) {
+        color: $grey;
+    }
+
+    @include breakpoint(md) {
+        color: $white;
     }
 
     &__points {
