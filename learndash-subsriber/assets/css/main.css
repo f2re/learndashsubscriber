@@ -497,8 +497,8 @@
         grid-template-areas: 'player__names player__names player__names' 'player__rank player__thumbnail player__points';
     grid-auto-rows: unset;
     row-gap: 0;
-    -webkit-column-gap: 0;
-            column-gap: 0;
+    -webkit-column-gap: 1%;
+            column-gap: 1%;
   }
 }
 
@@ -507,8 +507,6 @@
     grid-auto-rows: unset;
     width: 100%;
     row-gap: 0;
-    -webkit-column-gap: 0;
-            column-gap: 0;
     -ms-grid-columns: 85px 170px minmax(200px, 600px) 85px;
         grid-template-columns: 85px 170px minmax(200px, 600px) 85px;
         grid-template-areas: 'player__rank player__thumbnail player__names player__points';
@@ -519,7 +517,6 @@
   .player {
     grid-auto-rows: unset;
     width: 100%;
-    row-gap: 0;
     -ms-grid-columns: 85px 170px minmax(200px, 600px) 85px;
         grid-template-columns: 85px 170px minmax(200px, 600px) 85px;
         grid-template-areas: 'player__rank player__thumbnail player__names player__points';
@@ -531,9 +528,8 @@
     -ms-grid-columns: 85px 170px minmax(200px, 600px) 85px;
         grid-template-columns: 85px 170px minmax(200px, 600px) 85px;
         grid-template-areas: 'player__rank player__thumbnail player__names player__points';
-    row-gap: 20px;
-    -webkit-column-gap: 1%;
-            column-gap: 1%;
+    -webkit-column-gap: 20px;
+            column-gap: 20px;
   }
 }
 
