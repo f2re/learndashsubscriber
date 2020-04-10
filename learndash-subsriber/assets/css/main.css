@@ -495,7 +495,7 @@
   .player {
     -ms-grid-columns: 33.333% 33.333% 33.333%;
         grid-template-columns: 33.333% 33.333% 33.333%;
-        grid-template-areas: 'player__name player__name player__name' 'player__rank player__thumbnail player__points';
+        grid-template-areas: 'player__names player__names player__names' 'player__rank player__thumbnail player__points';
     grid-auto-rows: unset;
     -webkit-column-gap: 1%;
             column-gap: 1%;
