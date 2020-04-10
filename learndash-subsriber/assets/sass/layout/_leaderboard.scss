@@ -297,18 +297,17 @@
 
 .player {
     display: grid;
-    position: relative;
-    
+    position: relative;    
     grid-auto-rows: 85px;    
     column-gap: 20px;
-    row-gap: 20px; // template areas is breaking row gap; will come back to this
+    row-gap: 20px;
     align-items: center;
     max-width: 1000px;
     font-family: $primary-font;
     margin-bottom: 20px;
 
     @include breakpoint(xs) {
-        grid-template-columns: 30% auto 30%;
+        grid-template-columns: 50% 50%;
         grid-template-areas: 'player__rank player__thumbnail'
                              'player__name player__points';
         grid-auto-rows: unset;
