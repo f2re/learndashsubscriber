@@ -423,18 +423,19 @@
         grid-area: player__names;
         display: flex;
         justify-content: center;
-        align-items: center;        
-        font-size: 37px;
+        align-items: center;
         text-overflow: ellipsis;               
         white-space: nowrap;
         overflow: hidden;
         z-index: 2;
 
         @include breakpoint(xs) {
+            font-size: 30px;
             color: $grey;
         }
     
         @include breakpoint(md) {
+            font-size: 37px;
             color: $white;
         }
     }
