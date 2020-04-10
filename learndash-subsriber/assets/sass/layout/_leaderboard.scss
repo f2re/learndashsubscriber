@@ -311,7 +311,7 @@
                              'player__rank player__thumbnail player__points';
         grid-auto-rows: unset;
         row-gap: 0;
-        column-gap: 1%;
+        column-gap: 20px;
     }
 
     @include breakpoint(sm) {
@@ -426,14 +426,14 @@
         white-space: nowrap;
         overflow: hidden;
         z-index: 2;
-    }
 
-    @include breakpoint(xs) {
-        color: $grey;
-    }
-
-    @include breakpoint(md) {
-        color: $white;
+        @include breakpoint(xs) {
+            color: $grey;
+        }
+    
+        @include breakpoint(md) {
+            color: $white;
+        }
     }
 
     &__points {

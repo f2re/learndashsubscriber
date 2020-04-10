@@ -497,8 +497,8 @@
         grid-template-areas: 'player__names player__names player__names' 'player__rank player__thumbnail player__points';
     grid-auto-rows: unset;
     row-gap: 0;
-    -webkit-column-gap: 1%;
-            column-gap: 1%;
+    -webkit-column-gap: 20px;
+            column-gap: 20px;
   }
 }
 
@@ -650,13 +650,13 @@
 }
 
 @media (max-width: 767px) {
-  .player {
+  .player__names {
     color: #4C4C4C;
   }
 }
 
 @media (min-width: 992px) {
-  .player {
+  .player__names {
     color: #fff;
   }
 }
