@@ -496,30 +496,31 @@
         grid-template-columns: 32.5% 33% 32.5%;
         grid-template-areas: 'player__names player__names player__names' 'player__rank player__thumbnail player__points';
     grid-auto-rows: unset;
-    row-gap: 0;
     -webkit-column-gap: 20px;
             column-gap: 20px;
+    row-gap: 20px;
+    width: 100%;
   }
 }
 
 @media (min-width: 768px) {
   .player {
     grid-auto-rows: unset;
-    width: 100%;
-    row-gap: 0;
     -ms-grid-columns: 85px 170px minmax(200px, 600px) 85px;
         grid-template-columns: 85px 170px minmax(200px, 600px) 85px;
         grid-template-areas: 'player__rank player__thumbnail player__names player__points';
+    width: 100%;
+    margin-bottom: 20px;
   }
 }
 
 @media (min-width: 992px) {
   .player {
     grid-auto-rows: unset;
-    width: 100%;
     -ms-grid-columns: 85px 170px minmax(200px, 600px) 85px;
         grid-template-columns: 85px 170px minmax(200px, 600px) 85px;
         grid-template-areas: 'player__rank player__thumbnail player__names player__points';
+    width: 100%;
   }
 }
 
@@ -530,6 +531,7 @@
         grid-template-areas: 'player__rank player__thumbnail player__names player__points';
     -webkit-column-gap: 20px;
             column-gap: 20px;
+    row-gap: 0;
   }
 }
 
