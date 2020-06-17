@@ -245,7 +245,7 @@
         &:before {
             content: '';
             position: absolute;
-            display: flex;
+            display: none !important;
             left: -60px;     
             width: 30px;
             height: 30px;
